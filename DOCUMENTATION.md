@@ -84,6 +84,13 @@ print("Tasks complete!")
 ```
 
 <br />
+
+You can change the load fill and blank fill chars as well:
+```python3
+bar = lowbar.lowbar(bar_load_fill="O", bar_blank_fill=".")
+```
+
+<br />
 <br />
 
 <div align="center">
