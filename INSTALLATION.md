@@ -4,7 +4,7 @@
 
 Since lowbar is an extremely small module contained in a single file, installing it system-wide as a pip module is unnecessary. You can download and add lowbar to your project's code directly:
 ```
-curl -O lowbar.py https://github.com/AnnikaV9/lowbar/blob/master/src/lowbar/__init__.py
+curl -O lowbar.py https://raw.githubusercontent.com/AnnikaV9/lowbar/master/src/lowbar/__init__.py
 ```
 
 <br />
