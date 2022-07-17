@@ -16,6 +16,7 @@ cd lowbar
 python3 -m build -w
 python3 -m pip install dist/lowbar-*-py3-none-any.whl
 ```
+*You can also download the wheel from the [releases](https://github.com/AnnikaV9/lowbar/releases/) page.*
 
 <div align="center">
 
