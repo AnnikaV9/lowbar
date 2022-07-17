@@ -2,7 +2,7 @@
 
 <br />
 
-Once you have lowbar in your project, you can import it like any other module:
+Once you have lowbar installed, you can import it like any other module:
 ```python3
 import lowbar
 ```
