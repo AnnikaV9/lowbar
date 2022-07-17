@@ -5,7 +5,7 @@ lowbar<br />
 </h1>
 The simplest loading bar for python.
 <br /><br />
-<img src="https://cdn.discordapp.com/attachments/699852562505138236/997716679859650590/lowbar_demo.gif" width="80%">
+<img src="https://user-images.githubusercontent.com/68383195/179389436-a33af225-ba39-4b3e-bb6c-f0f5f25417f3.gif" width="80%">
 <details>
 <summary><em>demo.py</em></summary>
 <div align="left">
