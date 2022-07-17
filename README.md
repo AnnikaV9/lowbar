@@ -9,7 +9,7 @@ The simplest loading bar for python.
 <details>
 <summary><em>demo.py</em></summary>
 <div align="left">
-<pre>
+<br /><pre>
 <code># All the sleep calls would be tasks to
 # complete in a real program
 <br />
