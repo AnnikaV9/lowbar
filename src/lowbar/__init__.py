@@ -37,31 +37,31 @@ import time
 class lowbar:
 
     # initialize a few variables
-    def __init__(self, bar_load_fill="#", bar_blank_fill="-"):
-        self.completion = 1
-        self.bar_load_fill = bar_load_fill
-        self.bar_blank_fill = bar_blank_fill
+    def __init__(self, bar_load_fill="#": str, bar_blank_fill="-": str):
+        self.completion: int = 1
+        self.bar_load_fill: str = bar_load_fill
+        self.bar_blank_fill: str = bar_blank_fill
 
     # writing data to stdout
-    def _print_internal(self, text):
+    def _print_internal(self, text: str):
         sys.stdout.write(text)
         sys.stdout.flush()
 
     # obtaining the number of columns in the running console
-    def _get_terminal_columns(self):
+    def _get_terminal_columns(self) -> int:
         return shutil.get_terminal_size().columns
 
     # refresh the current bar with new values
     def _update_bar(self):
-        completion_string = str(self.completion)
-        bar_size = self._get_terminal_columns() - (len(completion_string) + 6)
-        bar_loaded_size = int(bar_size * (self.completion / 100))
-        bar_blank_fill = bar_size - bar_loaded_size
+        completion_string: str = str(self.completion)
+        bar_size: int = self._get_terminal_columns() - (len(completion_string) + 6)
+        bar_loaded_size: int = int(bar_size * (self.completion / 100))
+        bar_blank_fill: int = bar_size - bar_loaded_size
         self._print_internal(f"\r{self.completion} % [{bar_loaded_size * self.bar_load_fill}{bar_blank_fill * self.bar_blank_fill}] ")
 
     # overwrite the loading bar with optional text
-    def _overwrite_bar(self, text=""):
-        overwrite = (" " * (self._get_terminal_columns() - len(text)))
+    def _overwrite_bar(self, text="": str):
+        overwrite: str = (" " * (self._get_terminal_columns() - len(text)))
         self._print_internal(f"\r{text}{overwrite}")
 
     # increase or decrease the completed percentage and call _update_bar()
@@ -72,14 +72,14 @@ class lowbar:
     # same as update(), but with a smoother but slower animation
     # cannot decrease the completed percentage with this function
     def update_smooth(self, percentage: int):
-        distance = percentage - self.completion
+        distance: int = percentage - self.completion
         for i in range(distance):
             self.completion += 1
             self._update_bar()
             time.sleep(0.005)
 
     # log text to the console without affecting the bar
-    def log(self, text):
+    def log(self, text: str):
         self._overwrite_bar(f"{text}")
         print()
         self._update_bar()
