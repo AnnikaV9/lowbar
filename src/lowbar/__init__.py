@@ -37,7 +37,7 @@ import time
 class lowbar:
 
     # initialize a few variables
-    def __init__(self, bar_load_fill="#": str, bar_blank_fill="-": str):
+    def __init__(self, bar_load_fill: str="#", bar_blank_fill: str="-"):
         self.completion: int = 1
         self.bar_load_fill: str = bar_load_fill
         self.bar_blank_fill: str = bar_blank_fill
@@ -60,7 +60,7 @@ class lowbar:
         self._print_internal(f"\r{self.completion} % [{bar_loaded_size * self.bar_load_fill}{bar_blank_fill * self.bar_blank_fill}] ")
 
     # overwrite the loading bar with optional text
-    def _overwrite_bar(self, text="": str):
+    def _overwrite_bar(self, text: str=""):
         overwrite: str = (" " * (self._get_terminal_columns() - len(text)))
         self._print_internal(f"\r{text}{overwrite}")
 
