@@ -118,7 +118,7 @@ class LowBar:
         Log text to the console without affecting the bar
         """
 
-        self._overwrite_bar(f"{text}")
+        self._overwrite_bar(f"{self.completion}% {text}")
         print()
         self._update_bar()
 
