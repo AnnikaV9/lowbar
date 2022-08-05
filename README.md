@@ -16,7 +16,7 @@ The simplest no-nonsense loading bar for python.
 <br />
 import lowbar, time, random
 <br />
-bar = lowbar.lowbar()
+bar = lowbar.LowBar()
 <br />
 completion = 0
 <br />
