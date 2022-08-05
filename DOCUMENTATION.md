@@ -11,7 +11,7 @@ import lowbar
 
 And initialize the bar:
 ```python3
-bar = lowbar.lowbar()
+bar = lowbar.LowBar()
 ```
 
 <br />
@@ -55,7 +55,7 @@ bar.clear()
 Here's an example usage of the bar:
 ```python3
 import lowbar, time
-bar = lowbar.lowbar()
+bar = lowbar.LowBar()
 completion = 0
 for i in range(10):
     time.sleep(2) # This would be replaced with an actual task
@@ -71,7 +71,7 @@ print("Tasks complete!")
 You don't even need a loop:
 ```python3
 import lowbar, time
-bar = lowbar.lowbar()
+bar = lowbar.LowBar()
 bar.update(0)
 time.sleep(1)
 bar.update_smooth(10)
@@ -87,7 +87,7 @@ print("Tasks complete!")
 
 You can change the load fill and blank fill chars as well:
 ```python3
-bar = lowbar.lowbar(bar_load_fill="O", bar_blank_fill=".")
+bar = lowbar.LowBar(bar_load_fill="O", bar_blank_fill=".")
 ```
 
 <br />
