@@ -6,7 +6,7 @@ lowbar<br />
 
 The simplest no-nonsense loading bar for python.
 <br /><br />
-<img src="https://user-images.githubusercontent.com/68383195/179389436-a33af225-ba39-4b3e-bb6c-f0f5f25417f3.gif" width="80%">
+<img src="https://user-images.githubusercontent.com/68383195/183113043-7a891444-bf5a-45eb-af39-336e609a2c96.gif" width="80%">
 <br /><br /><details>
 <summary><em>demo.py</em></summary>
 <div align="left">
