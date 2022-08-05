@@ -73,11 +73,11 @@ class LowBar:
         Refreshes the current bar with new values
         """
 
-        completion_string: str = str(self.completion)
+        completion_string: str = " " + str(self.completion) if self.completion < 10 else str(self.completion)
         bar_size: int = self._get_terminal_columns() - (len(completion_string) + 6)
         bar_loaded_size: int = int(bar_size * (self.completion / 100))
         bar_blank_fill: int = bar_size - bar_loaded_size
-        self._print_internal(f"\r{self.completion} % [{bar_loaded_size * self.bar_load_fill}{bar_blank_fill * self.bar_blank_fill}] ")
+        self._print_internal(f"\r{completion_string} % [{bar_loaded_size * self.bar_load_fill}{bar_blank_fill * self.bar_blank_fill}] ")
 
     def _overwrite_bar(self, text: str=""):
 
