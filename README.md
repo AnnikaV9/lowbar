@@ -1,8 +1,9 @@
 <div align="center">
 <h1>
 lowbar<br />
-<a target="_blank" href="src/lowbar/__init__.py" title="Lines"><img src="https://img.shields.io/static/v1?label=Lines&message=61&color=green&style=flat-square"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue&style=flat-square"></a> <a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=0.1.3&color=red&style=flat-square"></a>
+<a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=0.1.3&color=red"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
 </h1>
+
 The simplest no-nonsense loading bar for python.
 <br /><br />
 <img src="https://user-images.githubusercontent.com/68383195/179389436-a33af225-ba39-4b3e-bb6c-f0f5f25417f3.gif" width="80%">
