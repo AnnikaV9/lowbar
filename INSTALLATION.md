@@ -13,6 +13,7 @@ If you do wish to install it as a system-wide module:
 ```
 git clone https://github.com/AnnikaV9/lowbar.git
 cd lowbar
+python3 -m pip install build hatchling
 python3 -m build -w
 python3 -m pip install dist/lowbar-*-py3-none-any.whl
 ```
