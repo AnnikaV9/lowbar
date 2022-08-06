@@ -46,6 +46,12 @@ class LowBar:
         Initializes a few variables
         """
 
+        if not isinstance(bar_load_fill, str):
+            raise TypeError("bar_load_fill should be type str")
+
+        if not isinstance(bar_blank_fill, str):
+            raise TypeError("bar_blank_fill should be type str")
+
         self.completion: int = 1
         self.bar_load_fill: str = bar_load_fill
         self.bar_blank_fill: str = bar_blank_fill
@@ -95,6 +101,9 @@ class LowBar:
         calls _update_bar()
         """
 
+        if not isinstance(percentage, int):
+            raise TypeError("percentage should be type int")
+
         self.completion = percentage
         self._update_bar()
 
@@ -104,6 +113,9 @@ class LowBar:
         Same as update(), but with a smoother but slower animation
         Cannot decrease the completed percentage with this function
         """
+
+        if not isinstance(percentage, int):
+            raise TypeError("percentage should be type int")
 
         distance: int = percentage - self.completion
         for i in range(distance):
@@ -117,6 +129,9 @@ class LowBar:
         """
         Log text to the console without affecting the bar
         """
+
+        if not isinstance(text, str):
+            raise TypeError("text should be type str")
 
         self._overwrite_bar(f"{text}")
         print()

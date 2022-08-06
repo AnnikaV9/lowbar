@@ -4,11 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lowbar"
-version = "0.1.6"
+version = "0.1.7"
 authors = [
   { name="AnnikaV9", email="carrot.moncher@gmail.com" },
 ]
-description = "The simplest loading bar for python."
+description = "The simplest no-nonsense loading bar for python."
 readme = "README.md"
 license = "Unlicense"
 requires-python = ">=3.7"
