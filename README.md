@@ -1,7 +1,7 @@
 <div align="center">
 <h1>
 lowbar<br />
-<a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=0.1.7&color=red"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
+<a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.0.0&color=red"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
 </h1>
 
 The simplest no-nonsense loading bar for python.
@@ -53,8 +53,10 @@ pip install lowbar
 ```
 <br />
 
-Or build the development version in this repository:
+Or build the development version:
 ```
+git clone https://github.com/AnnikaV9/lowbar.git
+cd lowbar
 pip install build hatchling
 python3 -m build -w
 pip install dist/lowbar-*-py3-none-any.whl
