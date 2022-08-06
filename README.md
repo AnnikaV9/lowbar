@@ -49,15 +49,15 @@ print("Tasks complete!")</code></pre>
 ## Installation 
 Install the latest stable release:
 ```
-python3 -m pip install lowbar
+pip install lowbar
 ```
-Or build the development version:
+<br />
+
+Or build the development version in this repository:
 ```
-git clone https://github.com/AnnikaV9/lowbar.git
-cd lowbar
-python3 -m pip install build hatchling
+pip install build hatchling
 python3 -m build -w
-python3 -m pip install dist/lowbar-*-py3-none-any.whl
+pip install dist/lowbar-*-py3-none-any.whl
 ```
 
 <br />
@@ -152,6 +152,16 @@ You can change the load fill and blank fill chars as well:
 ```python3
 bar = lowbar.LowBar(bar_load_fill="O", bar_blank_fill=".")
 ```
+
+<br />
+<br />
+
+## Contributing
+All contributions are welcome!
+
+If you wish to to report a bug or suggest a feature, open an [issue](https://github.com/AnnikaV9/lowbar/issues).
+
+You can also make a [pull request](https://github.com/AnnikaV9/lowbar/pulls) directly.
 
 <br />
 <br />
