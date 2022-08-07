@@ -4,9 +4,10 @@ lowbar<br />
 <a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.1.2&color=red"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
 </h1>
 
-The simplest no-nonsense progress bar for python.
+The simplest no-nonsense progress bar for python
 <br /><br />
-<img src="https://user-images.githubusercontent.com/68383195/183113043-7a891444-bf5a-45eb-af39-336e609a2c96.gif" width="80%">
+<img src="https://user-images.githubusercontent.com/68383195/183113043-7a891444-bf5a-45eb-af39-336e609a2c96.gif" width="80%"><br />
+<em>This GIF's playback speed is slower than the actual demo execution</em>
 <br /><br /><details>
 <summary><em>demo.py</em></summary>
 <div align="left">
