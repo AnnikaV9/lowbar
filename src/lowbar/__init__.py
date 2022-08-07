@@ -1,5 +1,5 @@
 """
-The simplest no-nonsense loading bar for python.
+The simplest no-nonsense progress bar for python.
 https://github.com/AnnikaV9/lowbar/issues
 """
 
