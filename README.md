@@ -177,7 +177,9 @@ All contributions are welcome!
 
 If you wish to to report a bug or suggest a feature, open an [issue](https://github.com/AnnikaV9/lowbar/issues).
 
-You can also make a [pull request](https://github.com/AnnikaV9/lowbar/pulls) directly.
+If you already have a fix for a bug, make a [pull request](https://github.com/AnnikaV9/lowbar/pulls) directly.
+
+You can also [vote on](https://github.com/AnnikaV9/lowbar/discussions/4) already suggested features.
 
 <br />
 <br />
