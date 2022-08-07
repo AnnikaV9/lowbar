@@ -106,7 +106,7 @@ The above function will immediately move the bar to 20%. To use a more smoother 
 ```python3
 bar.update_smooth(40)
 ```
-***Note:** `update_smooth()` will add a 5 ms delay to every percentage increment, which may cause your program to become slow if you call lowbar multiple different times. A full bar will take half a second to fill up.*
+***Note:** `update_smooth()` will add a 5 ms delay to every percentage increment, which may cause your program to become slow if you call lowbar multiple different times. A full bar will take half a second to fill up. If you value your program's speed, it's best to stick with `update()`*
 
 <br />
 
