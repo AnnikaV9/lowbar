@@ -56,6 +56,21 @@ class LowBar:
         self.bar_load_fill: str = bar_load_fill
         self.bar_blank_fill: str = bar_blank_fill
 
+    def __enter__(self):
+        """
+        Context manager setup for the bar - automatically shows the bar
+        """
+        self.update(0)
+        return self
+
+    def __exit__(self, type, value, traceback):
+        """
+        Context manager exit to clear the bar automatically
+        """
+        if type == AttributeError:
+            raise AttributeError(f"{value}\nPlease only use: update() update_smooth() log() clear()") from None
+        self._overwrite_bar()
+
     def _print_internal(self, text: str):
 
         """

@@ -154,6 +154,17 @@ You can change the load fill and blank fill chars as well:
 ```python3
 bar = lowbar.LowBar(bar_load_fill="O", bar_blank_fill=".")
 ```
+<br />
+
+The bar can also used with a `with` context manager. The context manager will automatically start the bar at 0% and clear the bar afterwards:
+```python3
+with lowbar.LowBar() as bar:
+    bar.update(10)
+    time.sleep(2)  # Run a task
+    bar.update_smooth(100)
+
+print("Tasks complete!")
+```
 
 <br />
 <br />
