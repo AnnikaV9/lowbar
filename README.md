@@ -1,7 +1,7 @@
 <div align="center">
 <h1>
 lowbar<br />
-<a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/pypi/v/lowbar?label=PyPi&color=red"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/github/license/AnnikaV9/lowbar?label=License&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
+<a target="_blank" href="https://pypi.org/project/lowbar"><img src="https://img.shields.io/pypi/v/lowbar?label=PyPi&color=red"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/blob/master/LICENSE" title="License"><img src="https://img.shields.io/github/license/AnnikaV9/lowbar?label=License&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
 </h1>
 
 The simplest no-nonsense progress bar for python
