@@ -189,7 +189,7 @@ If you already have a fix for a bug, make a [pull request](https://github.com/An
 
 You can also [vote on](https://github.com/AnnikaV9/lowbar/discussions/4) already suggested features.
 
-See [CONTRIBUTING.md](https://github.com/AnnikaV9/lowbar/blob/master/CONTRIBUTORS.md) for guidelines to follow.
+See [CONTRIBUTING.md](https://github.com/AnnikaV9/lowbar/blob/master/CONTRIBUTING.md) for guidelines to follow.
 
 Contributors are listed in [CONTRIBUTORS.md](https://github.com/AnnikaV9/lowbar/blob/master/CONTRIBUTORS.md).
 
