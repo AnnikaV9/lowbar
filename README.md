@@ -1,7 +1,7 @@
 <div align="center">
 <h1>
 lowbar<br />
-<a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.0.0&color=red"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
+<a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.1.0&color=red"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=The%20Unlicense&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
 </h1>
 
 The simplest no-nonsense loading bar for python.
@@ -119,8 +119,8 @@ bar.clear()
 
 Here's an example usage of the bar:
 ```python3
-import lowbar, time
 bar = lowbar.LowBar()
+
 completion = 0
 for i in range(10):
     time.sleep(2) # This would be replaced with an actual task
@@ -128,6 +128,7 @@ for i in range(10):
     bar.log(f"Task {i+1} completed")
     completion += 10
 bar.clear()
+
 print("Tasks complete!")
 ```
 
@@ -135,8 +136,8 @@ print("Tasks complete!")
 
 You don't even need a loop:
 ```python3
-import lowbar, time
 bar = lowbar.LowBar()
+
 bar.update(0)
 time.sleep(1)
 bar.update_smooth(10)
@@ -145,6 +146,19 @@ bar.update_smooth(40)
 time.sleep(2)
 bar.update_smooth(100)
 bar.clear()
+
+print("Tasks complete!")
+```
+
+<br />
+
+The bar can also used with a context manager. This will automatically start the bar at 0% and clear the bar when exiting:
+```python3
+with lowbar.LowBar() as bar:
+    bar.update(10)
+    time.sleep(2)
+    bar.update_smooth(100)
+
 print("Tasks complete!")
 ```
 
@@ -153,17 +167,6 @@ print("Tasks complete!")
 You can change the load fill and blank fill chars as well:
 ```python3
 bar = lowbar.LowBar(bar_load_fill="O", bar_blank_fill=".")
-```
-<br />
-
-The bar can also used with a `with` context manager. The context manager will automatically start the bar at 0% and clear the bar afterwards:
-```python3
-with lowbar.LowBar() as bar:
-    bar.update(10)
-    time.sleep(2)  # Run a task
-    bar.update_smooth(100)
-
-print("Tasks complete!")
 ```
 
 <br />
