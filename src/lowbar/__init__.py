@@ -32,6 +32,7 @@ import time
 
 
 class LowBar:
+    
     """
     The main lowbar class
     """
