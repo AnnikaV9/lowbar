@@ -30,7 +30,6 @@ https://github.com/AnnikaV9/lowbar/issues
 # For more information, please refer to <https://unlicense.org>
 #
 
-import sys
 import shutil
 import time
 
@@ -85,8 +84,7 @@ class LowBar:
         Writes data to stdout
         """
 
-        sys.stdout.write(text)
-        sys.stdout.flush()
+        print(text, end='', flush=True)
 
     def _get_terminal_columns(self) -> int:
 

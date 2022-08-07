@@ -1,10 +1,10 @@
 <div align="center">
 <h1>
 lowbar<br />
-<a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.1.0&color=red"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
+<a target="_blank" href="pyproject.toml" title="Version"><img src="https://img.shields.io/static/v1?label=Version&message=1.1.1&color=red"></a> <a target="_blank" href="LICENSE" title="License"><img src="https://img.shields.io/static/v1?label=License&message=MIT&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/pylint.yml/badge.svg"></a>
 </h1>
 
-The simplest no-nonsense loading bar for python.
+The simplest no-nonsense progress bar for python.
 <br /><br />
 <img src="https://user-images.githubusercontent.com/68383195/183113043-7a891444-bf5a-45eb-af39-336e609a2c96.gif" width="80%">
 <br /><br /><details>
@@ -43,6 +43,12 @@ print("Tasks complete!")</code></pre>
 
 <h3>
 </div>
+<br />
+<br />
+
+## Introduction
+lowbar is a blazing fast module with zero dependencies for displaying a progress bar in the terminal. It's extremely simple with a low amount of code, hence the name lowbar.
+
 <br />
 <br />
 
@@ -152,7 +158,7 @@ print("Tasks complete!")
 
 <br />
 
-The bar can also used with a context manager. This will automatically start the bar at 0% and clear the bar when exiting:
+The bar can also be used with a context manager. This will automatically start the bar at 0% and clear the bar when exiting:
 ```python3
 with lowbar.LowBar() as bar:
     bar.update(10)
