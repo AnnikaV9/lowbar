@@ -10,7 +10,7 @@ authors = [
 ]
 description = "The simplest no-nonsense loading bar for python."
 readme = "README.md"
-license = "Unlicense"
+license = "MIT"
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python :: 3",
