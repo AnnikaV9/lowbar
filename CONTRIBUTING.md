@@ -5,7 +5,7 @@ A set of guidelines to follow when contributing to lowbar.
 <br />
 
 ## Keep code complexity minimal
-lowbar's main goal is to be a **simple** solution that is bug-free and easily maintained. Extremly complex or spaghetti code makes the codebase harder to maintain, and increases the possibilities of bugs in future updates.
+lowbar's main goal is to be a **simple** solution that is bug-free and easily maintained. Extremely complex or spaghetti code makes the codebase harder to maintain, and increases the possibilities of bugs in future updates.
 
 <br />
 <br />
