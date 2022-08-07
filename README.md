@@ -183,7 +183,7 @@ bar = lowbar.LowBar(bar_load_fill="O", bar_blank_fill=".")
 ## Contributing
 All contributions are welcome!
 
-If you wish to to report a bug or suggest a feature, open an [issue](https://github.com/AnnikaV9/lowbar/issues).
+If you wish to report a bug or suggest a feature, open an [issue](https://github.com/AnnikaV9/lowbar/issues).
 
 If you already have a fix for a bug, make a [pull request](https://github.com/AnnikaV9/lowbar/pulls) directly.
 
