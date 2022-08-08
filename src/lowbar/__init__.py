@@ -71,9 +71,6 @@ class LowBar:
         without requiring clear()
         """
 
-        if type == AttributeError:
-            raise AttributeError(f"{value}\nValid functions: update() update_smooth() log() clear()") from None
-
         self._overwrite_bar()
 
     def _print_internal(self, text: str) -> None:
