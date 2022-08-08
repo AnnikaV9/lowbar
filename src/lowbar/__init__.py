@@ -37,7 +37,7 @@ class LowBar:
     The main lowbar class
     """
 
-    def __init__(self, bar_load_fill: str = "#", bar_blank_fill: str = "-") -> None:
+    def __init__(self, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
 
         """
         Initializes a few variables
@@ -101,7 +101,7 @@ class LowBar:
         bar_blank_fill: int = bar_size - bar_loaded_size
         self._print_internal(f"\r{completion_string} % [{bar_loaded_size * self.bar_load_fill}{bar_blank_fill * self.bar_blank_fill}] ")
 
-    def _overwrite_bar(self, text: str = "") -> None:
+    def _overwrite_bar(self, text: str="") -> None:
 
         """
         Overwrite the loading bar with optional text
