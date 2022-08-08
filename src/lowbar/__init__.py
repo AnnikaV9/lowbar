@@ -37,7 +37,7 @@ class LowBar:
     The main lowbar class
     """
 
-    def __init__(self, bar_load_fill: str="#", bar_blank_fill: str="-"):
+    def __init__(self, bar_load_fill: str = "#", bar_blank_fill: str = "-") -> None:
 
         """
         Initializes a few variables
@@ -53,7 +53,7 @@ class LowBar:
         self.bar_load_fill: str = bar_load_fill
         self.bar_blank_fill: str = bar_blank_fill
 
-    def __enter__(self):
+    def __enter__(self) -> object:
 
         """
         Context manager setup for the bar - automatically display bar
@@ -64,7 +64,7 @@ class LowBar:
 
         return self
 
-    def __exit__(self, type, value, traceback):
+    def __exit__(self, type, value, traceback) -> None:
 
         """
         Context manager exit to clear the bar automatically
@@ -76,7 +76,7 @@ class LowBar:
 
         self._overwrite_bar()
 
-    def _print_internal(self, text: str):
+    def _print_internal(self, text: str) -> None:
 
         """
         Writes data to stdout
@@ -92,7 +92,7 @@ class LowBar:
 
         return shutil.get_terminal_size().columns
 
-    def _update_bar(self):
+    def _update_bar(self) -> None:
 
         """
         Refreshes the current bar with new values
@@ -104,7 +104,7 @@ class LowBar:
         bar_blank_fill: int = bar_size - bar_loaded_size
         self._print_internal(f"\r{completion_string} % [{bar_loaded_size * self.bar_load_fill}{bar_blank_fill * self.bar_blank_fill}] ")
 
-    def _overwrite_bar(self, text: str=""):
+    def _overwrite_bar(self, text: str = "") -> None:
 
         """
         Overwrite the loading bar with optional text
@@ -113,7 +113,7 @@ class LowBar:
         overwrite: str = (" " * (self._get_terminal_columns() - len(text)))
         self._print_internal(f"\r{text}{overwrite}")
 
-    def update(self, percentage: int):
+    def update(self, percentage: int) -> None:
 
         """
         Increases or decreases the completed percentage and
@@ -126,7 +126,7 @@ class LowBar:
         self.completion = percentage
         self._update_bar()
 
-    def update_smooth(self, percentage: int):
+    def update_smooth(self, percentage: int) -> None:
 
         """
         Same as update(), but with a smoother but slower animation
@@ -143,7 +143,7 @@ class LowBar:
             self._update_bar()
             time.sleep(0.005)
 
-    def log(self, text: str):
+    def log(self, text: str) -> None:
 
         """
         Log text to the console without affecting the bar
@@ -156,7 +156,7 @@ class LowBar:
         print()
         self._update_bar()
 
-    def clear(self):
+    def clear(self) -> None:
 
         """
         Clears the bar completely from the console
