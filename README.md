@@ -163,8 +163,9 @@ print("Tasks complete!")
 The bar can also be used with a context manager. This will automatically start the bar at 0% and clear the bar when exiting:
 ```python3
 with lowbar.LowBar() as bar:
-    bar.update(10)
-    time.sleep(2)
+    time.sleep(1)
+    bar.update_smooth(10)
+    time.sleep(3)
     bar.update_smooth(100)
 
 print("Tasks complete!")
