@@ -20,8 +20,8 @@ bar = lowbar.LowBar()
 <br />
 completion = 0
 <br />
+bar.update(0)
 for i in range(10):
-    bar.update(0)
     bar.log(f"Running task {i+1}...")
     time.sleep(random.random())
     completion += 10
@@ -107,7 +107,7 @@ The above function will immediately move the bar to 20%. To use a more smoother 
 ```python3
 bar.update_smooth(40)
 ```
-***Note:** Since version 1.1.4, `update_smooth()` is no-longer fully blocking. It will run in a separate thread, so your program will continue it's execution while the bar is animating. However, calling another lowbar function during the animation will block the main thread to prevent visual glitches. To avoid this block, make sure to always call `log()` before `update_smooth()`, not after. See issue [#5](https://github.com/AnnikaV9/lowbar/issues/5)*
+***Note:** Since version 1.1.4, `update_smooth()` is no-longer fully blocking. It will run in a separate thread, so your program will continue it's execution while the bar is animating. However, calling another lowbar function during the animation will block the main thread to prevent visual glitches. To avoid this block, make sure to call `log()` before `update_smooth()`, not after. See issue [#5](https://github.com/AnnikaV9/lowbar/issues/5)*
 
 <br />
 
@@ -130,10 +130,10 @@ Here's an example usage of the bar:
 bar = lowbar.LowBar()
 
 completion = 0
+bar.update(0)
 for i in range(10):
-    bar.update(0)
-    bar.log(f"Running task {i+1}...")
     time.sleep(2) # This would be replaced with an actual task
+    bar.log(f"Task {i+1} completed")
     completion += 10
     bar.update_smooth(completion)
 bar.clear()
