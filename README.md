@@ -12,8 +12,8 @@ The simplest no-nonsense progress bar for python
 <summary><em>demo.py</em></summary>
 <div align="left">
 <br /><pre>
-<code># All the sleep calls would be tasks to
-# complete in a real program
+<code># All the sleep() calls would be tasks
+# to complete in a real program
 <br />
 import lowbar, time, random
 <br />
@@ -23,8 +23,8 @@ completion = 0
 <br />
 for i in range(10):
     time.sleep(random.random())
-    bar.update_smooth(completion)
     bar.log(f"Task {i+1} completed")
+    bar.update_smooth(completion)
     completion += 10
 bar.clear()
 <br />
@@ -107,7 +107,7 @@ The above function will immediately move the bar to 20%. To use a more smoother 
 ```python3
 bar.update_smooth(40)
 ```
-***Note:** `update_smooth()` will add a 5 ms delay to every percentage increment, which may cause your program to become slow if you call lowbar multiple different times. A full bar will take half a second to fill up. If you value your program's speed, it's best to stick with `update()`. See issue [#5](https://github.com/AnnikaV9/lowbar/issues/5)*
+***Note:** Since version 1.1.4, `update_smooth()` is no-longer fully blocking. It will run in a separate thread, so your program will continue it's execution while the bar is animating. However, calling another lowbar function during the animation will block the main thread to prevent visual glitches. To avoid this block, make sure to always call `log()` before `update_smooth()`, not after. See issue [#5](https://github.com/AnnikaV9/lowbar/issues/5)*
 
 <br />
 
@@ -132,8 +132,8 @@ bar = lowbar.LowBar()
 completion = 0
 for i in range(10):
     time.sleep(2) # This would be replaced with an actual task
-    bar.update_smooth(completion)
     bar.log(f"Task {i+1} completed")
+    bar.update_smooth(completion)
     completion += 10
 bar.clear()
 

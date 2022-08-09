@@ -29,35 +29,36 @@ https://github.com/AnnikaV9/lowbar/issues
 
 import shutil
 import time
-
+import threading
 
 class LowBar:
 
     """
-    The main lowbar class
+    The main lowbar class.
     """
 
     def __init__(self, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
 
         """
-        Initializes a few variables
+        Initializes a few variables.
         """
 
         if not isinstance(bar_load_fill, str):
-            raise TypeError("bar_load_fill should be type str")
+            raise TypeError("arg bar_load_fill should be type str")
 
         if not isinstance(bar_blank_fill, str):
-            raise TypeError("bar_blank_fill should be type str")
+            raise TypeError("arg bar_blank_fill should be type str")
 
         self.completion: int = 1
         self.bar_load_fill: str = bar_load_fill
         self.bar_blank_fill: str = bar_blank_fill
+        self.bar_is_smoothing: bool = False
 
     def __enter__(self) -> object:
 
         """
-        Context manager setup for the bar - automatically display bar
-        without requiring update()
+        Context manager setup to automatically display bar
+        without requiring update().
         """
 
         self.update(0)
@@ -68,8 +69,10 @@ class LowBar:
 
         """
         Context manager exit to clear the bar automatically
-        without requiring clear()
+        without requiring clear().
         """
+
+        self._block_when_smoothing()
 
         self._overwrite_bar()
 
@@ -84,7 +87,7 @@ class LowBar:
     def _get_terminal_columns(self) -> int:
 
         """
-        Returns the number of columns in the running console
+        Returns the number of columns in the running console.
         """
 
         return shutil.get_terminal_size().columns
@@ -92,7 +95,7 @@ class LowBar:
     def _update_bar(self) -> None:
 
         """
-        Refreshes the current bar with new values
+        Refreshes the current bar with new values.
         """
 
         completion_string: str = f" {str(self.completion)}" if self.completion < 10 else str(self.completion)
@@ -104,50 +107,81 @@ class LowBar:
     def _overwrite_bar(self, text: str="") -> None:
 
         """
-        Overwrite the loading bar with optional text
+        Overwrite the loading bar with optional text.
         """
 
         overwrite: str = (" " * (self._get_terminal_columns() - len(text)))
         self._print_internal(f"\r{text}{overwrite}")
 
-    def update(self, percentage: int) -> None:
+    def _update_bar_smooth(self, percentage: int):
 
         """
-        Increases or decreases the completed percentage and
-        calls _update_bar()
+        Wraps _update_bar() with a smoother but slower animation.
         """
 
-        if not isinstance(percentage, int):
-            raise TypeError("percentage should be type int")
-
-        self.completion = percentage
-        self._update_bar()
-
-    def update_smooth(self, percentage: int) -> None:
-
-        """
-        Same as update(), but with a smoother but slower animation
-        Cannot decrease the completed percentage with this function
-        """
-
-        if not isinstance(percentage, int):
-            raise TypeError("percentage should be type int")
-
+        self.bar_is_smoothing = True
         distance: int = percentage - self.completion
         for i in range(distance):
             del i
             self.completion += 1
             self._update_bar()
             time.sleep(0.005)
+        
+        self.bar_is_smoothing = False
+
+    def _block_when_smoothing(self):
+
+        """
+        Blocks the main thread if bar is still running _update_bar_smooth()
+        Only used if another function call is performed. If the bar is
+        left to smooth properly without calling other functions, it will
+        be non-blocking.
+        """
+
+        while True:
+            if not self.bar_is_smoothing:
+                break
+
+    def update(self, percentage: int) -> None:
+
+        """
+        Increases or decreases the completed percentage and
+        calls _update_bar().
+        """
+
+        if not isinstance(percentage, int):
+            raise TypeError("arg percentage should be type int")
+
+        self._block_when_smoothing()
+
+        self.completion = percentage
+        self._update_bar()
+
+    def update_smooth(self, percentage: int):
+
+        """
+        Increases the completed percentage and calls _update_bar_smooth()
+        in a seperate thread so it's non-blocking.
+        Cannot decrease the completed percentage with this function.
+        """
+
+        if not isinstance(percentage, int):
+            raise TypeError("arg percentage should be type int")
+
+        self._block_when_smoothing()
+
+        threading.Thread(target=self._update_bar_smooth, args=[percentage]).start()
 
     def log(self, text: str) -> None:
 
         """
-        Log text to the console without affecting the bar
+        Log text to the console without affecting the bar.
         """
 
         if not isinstance(text, str):
-            raise TypeError("text should be type str")
+            raise TypeError("arg text should be type str")
+
+        self._block_when_smoothing()
 
         self._overwrite_bar(f"{text}")
         print()
@@ -156,7 +190,9 @@ class LowBar:
     def clear(self) -> None:
 
         """
-        Clears the bar completely from the console
+        Clears the bar completely from the console.
         """
+
+        self._block_when_smoothing()
 
         self._overwrite_bar()
