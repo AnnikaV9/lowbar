@@ -6,8 +6,7 @@ lowbar<br />
 
 The simplest no-nonsense progress bar for python
 <br /><br />
-<img src="https://user-images.githubusercontent.com/68383195/183113043-7a891444-bf5a-45eb-af39-336e609a2c96.gif" width="80%"><br />
-<em>This GIF's playback speed is slower than the actual demo execution</em>
+<img src="https://user-images.githubusercontent.com/68383195/183565476-c90e24a5-acd1-4058-af43-824189c2e71c.gif" width="80%"><br />
 <br /><br /><details>
 <summary><em>demo.py</em></summary>
 <div align="left">
@@ -22,10 +21,11 @@ bar = lowbar.LowBar()
 completion = 0
 <br />
 for i in range(10):
+    bar.update(0)
+    bar.log(f"Running task {i+1}...")
     time.sleep(random.random())
-    bar.log(f"Task {i+1} completed")
-    bar.update_smooth(completion)
     completion += 10
+    bar.update_smooth(completion)
 bar.clear()
 <br />
 print("\nRunning checks...")
@@ -131,10 +131,11 @@ bar = lowbar.LowBar()
 
 completion = 0
 for i in range(10):
+    bar.update(0)
+    bar.log(f"Running task {i+1}...")
     time.sleep(2) # This would be replaced with an actual task
-    bar.log(f"Task {i+1} completed")
-    bar.update_smooth(completion)
     completion += 10
+    bar.update_smooth(completion)
 bar.clear()
 
 print("Tasks complete!")
