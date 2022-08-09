@@ -6,44 +6,9 @@ lowbar<br />
 
 The simplest no-nonsense progress bar for python
 <br /><br />
-<img src="https://user-images.githubusercontent.com/68383195/183565476-c90e24a5-acd1-4058-af43-824189c2e71c.gif" width="80%"><br />
-<br /><br /><details>
-<summary><em>demo.py</em></summary>
-<div align="left">
-<br /><pre>
-<code># All the sleep() calls would be tasks
-# to complete in a real program
-<br />
-import lowbar, time, random
-<br />
-bar = lowbar.LowBar()
-<br />
-completion = 0
-<br />
-bar.update(0)
-for i in range(10):
-    bar.log(f"Running task {i+1}...")
-    time.sleep(random.random())
-    completion += 10
-    bar.update_smooth(completion)
-bar.clear()
-<br />
-print("\nRunning checks...")
-bar.update(0)
-time.sleep(1)
-bar.update_smooth(10)
-time.sleep(2)
-bar.update_smooth(40)
-time.sleep(2)
-bar.update_smooth(100)
-bar.clear()
-print("Tasks complete!")</code></pre>
+<img src="https://user-images.githubusercontent.com/68383195/183643459-c03aa545-b2bd-494d-8870-cbb456ca1a66.gif" width="80%"><br />
 </div>
-</details>
-<h3>
 
-<h3>
-</div>
 <br />
 <br />
 
