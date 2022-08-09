@@ -126,7 +126,7 @@ class LowBar:
             self.completion += 1
             self._update_bar()
             time.sleep(0.005)
-        
+
         self.bar_is_smoothing = False
 
     def _block_when_smoothing(self):
