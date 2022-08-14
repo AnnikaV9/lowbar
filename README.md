@@ -6,7 +6,7 @@ lowbar<br />
 
 The simplest no-nonsense progress bar for python
 <br /><br />
-<img src="https://user-images.githubusercontent.com/68383195/183643459-c03aa545-b2bd-494d-8870-cbb456ca1a66.gif" width="80%"><br />
+<img src="https://user-images.githubusercontent.com/68383195/184525688-43cdeb20-25eb-4302-b568-5b5079a2eb43.gif" width="80%"><br />
 </div>
 
 <br />
