@@ -27,11 +27,7 @@ pip install lowbar
 
 Or build the development version:
 ```
-git clone https://github.com/AnnikaV9/lowbar.git
-cd lowbar
-pip install build hatchling
-python3 -m build -w
-pip install dist/lowbar*.whl
+pip install git+https://github.com/AnnikaV9/lowbar
 ```
 
 <br />
