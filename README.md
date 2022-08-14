@@ -31,7 +31,7 @@ git clone https://github.com/AnnikaV9/lowbar.git
 cd lowbar
 pip install build hatchling
 python3 -m build -w
-pip install dist/lowbar-*-py3-none-any.whl
+pip install dist/lowbar*.whl
 ```
 
 <br />
