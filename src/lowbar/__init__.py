@@ -65,7 +65,7 @@ class LowBar:
 
         return self
 
-    def __exit__(self, type, value, traceback) -> None:
+    def __exit__(self, *exc) -> None:
 
         """
         Context manager exit to clear the bar automatically
@@ -95,7 +95,8 @@ class LowBar:
     def _update_bar(self) -> None:
 
         """
-        Refreshes the current bar with new values.
+        Refreshes the current bar with new values, and a
+        possibly resized console.
         """
 
         completion_string: str = f" {str(self.completion)}" if self.completion < 10 else str(self.completion)
