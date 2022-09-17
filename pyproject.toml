@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lowbar"
-version = "1.2.5"
+version = "1.3.5"
 authors = [
   { name="AnnikaV9", email="carrot.moncher@gmail.com" },
 ]
@@ -14,7 +14,7 @@ license = "MIT"
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: The Unlicense (Unlicense)",
+    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Intended Audience :: Developers",
     "Intended Audience :: Education",
