@@ -49,11 +49,10 @@ bar = lowbar.LowBar()
 
 <br />
 
-To make the bar visible, simple update the completion percentage:
+To make the bar visible and set at 0%:
 ```python3
-bar.update(0)
+bar.new()
 ```
-*We start with 0 since our program hasn't completed anything yet.*
 
 <br />
 
@@ -91,7 +90,7 @@ Here's an example usage of the bar:
 bar = lowbar.LowBar()
 
 completion = 0
-bar.update(0)
+bar.new()
 for i in range(10):
     time.sleep(2) # This would be replaced with an actual task
     bar.log(f"Task {i+1} completed")
@@ -108,7 +107,7 @@ You don't even need a loop:
 ```python3
 bar = lowbar.LowBar()
 
-bar.update(0)
+bar.new()
 time.sleep(1)
 bar.update_smooth(10)
 time.sleep(2)
@@ -122,7 +121,7 @@ print("Tasks complete!")
 
 <br />
 
-The bar can also be used with a context manager. This will automatically start the bar at 0% and clear the bar when exiting:
+The bar can also be used with a context manager. It will automatically run `new()` at the start and `clear()` when exiting:
 ```python3
 with lowbar.LowBar() as bar:
     time.sleep(1)
