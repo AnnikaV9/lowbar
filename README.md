@@ -146,8 +146,8 @@ lowbar will use `update()` by default when working with iterables. If you're onl
 ```python3
 for i in lowbar.LowBar(range(6), smooth_iter=True):
     time.sleep(1)
-    bar.log(f"Task {i+1} completed")
 ```
+***Note:** You can't use `log()` when using lowbar with an iterable.*
 
 <br />
 
