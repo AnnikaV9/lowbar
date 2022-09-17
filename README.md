@@ -134,7 +134,7 @@ print("Tasks complete!")
 
 <br />
 
-To make things *even* more simpler, you can wrap lowbar around an interable. It will automatically calculate how much to increase the percentage by every loop:
+To make things *even* more simpler, you can wrap lowbar around an iterable. It will automatically calculate how much to increase the percentage by every loop:
 ```python3
 for i in lowbar.LowBar(range(100)):
     time.sleep(0.5)
