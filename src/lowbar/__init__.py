@@ -61,7 +61,7 @@ class LowBar:
         without requiring update().
         """
 
-        self.update(0)
+        self.new()
 
         return self
 
