@@ -114,7 +114,7 @@ class LowBar:
         overwrite: str = (" " * (self._get_terminal_columns() - len(text)))
         self._print_internal(f"\r{text}{overwrite}")
 
-    def _update_bar_smooth(self, percentage: int):
+    def _update_bar_smooth(self, percentage: int) -> None:
 
         """
         Wraps _update_bar() with a smoother but slower animation.
@@ -130,7 +130,7 @@ class LowBar:
 
         self.bar_is_smoothing = False
 
-    def _block_when_smoothing(self):
+    def _block_when_smoothing(self) -> None:
 
         """
         Blocks the main thread if bar is still running _update_bar_smooth()
@@ -157,8 +157,16 @@ class LowBar:
 
         self.completion = percentage
         self._update_bar()
+    
+    def new(self) -> None:
 
-    def update_smooth(self, percentage: int):
+        """
+        Alias for update(0)
+        """
+
+        self.update(0)
+
+    def update_smooth(self, percentage: int) -> None:
 
         """
         Increases the completed percentage and calls _update_bar_smooth()

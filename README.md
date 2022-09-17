@@ -25,7 +25,7 @@ pip install lowbar
 ```
 <br />
 
-Or the development version:
+Or the development version (Undocumented):
 ```
 pip install git+https://github.com/AnnikaV9/lowbar
 ```
