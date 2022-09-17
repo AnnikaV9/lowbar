@@ -134,6 +134,23 @@ print("Tasks complete!")
 
 <br />
 
+To make things *even* more simpler, you can wrap lowbar around an interable. It will automatically calculate how much to increase the percentage by every loop:
+```python3
+for i in lowbar.LowBar(range(100)):
+    time.sleep(0.5)
+```
+
+<br />
+
+lowbar will use `update()` by default when working with iterables. If you're only going to loop a few times, you can force lowbar to use `update_smooth()`:
+```python3
+for i in lowbar.LowBar(range(6), smooth_iter=True):
+    time.sleep(1)
+    bar.log(f"Task {i+1} completed")
+```
+
+<br />
+
 You can change the load fill and blank fill chars as well:
 ```python3
 bar = lowbar.LowBar(bar_load_fill="O", bar_blank_fill=".")
