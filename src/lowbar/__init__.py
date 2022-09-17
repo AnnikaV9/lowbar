@@ -58,7 +58,7 @@ class LowBar:
 
         """
         Context manager setup to automatically display bar
-        without requiring update().
+        without requiring new().
         """
 
         self.new()
@@ -72,9 +72,7 @@ class LowBar:
         without requiring clear().
         """
 
-        self._block_when_smoothing()
-
-        self._overwrite_bar()
+        self.clear()
 
     def _print_internal(self, text: str) -> None:
 
