@@ -37,7 +37,7 @@ class LowBar:
     The main lowbar class.
     """
 
-    def __init__(self, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
+    def __init__(self, bar_iter=: object=None, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
 
         """
         Initializes a few variables.
@@ -49,6 +49,7 @@ class LowBar:
         if not isinstance(bar_blank_fill, str):
             raise TypeError("arg bar_blank_fill should be type str")
 
+        self.bar_iter: object = bar_iter
         self.completion: int = 1
         self.bar_load_fill: str = bar_load_fill
         self.bar_blank_fill: str = bar_blank_fill
@@ -73,6 +74,27 @@ class LowBar:
         """
 
         self.clear()
+
+    def __iter__(self) -> object:
+
+        """
+        Iterable manager that automatically runs new() at the
+        start and clear() at the end
+        """
+
+        self.new()
+
+        div: float = 100 / len(list(self.bar_iter))
+        add: float = div
+
+        try:
+            for item in self.bar_iter:
+                yield item
+                self.update(int(div))
+                div += add
+
+        finally:
+            self.clear()
 
     def _print_internal(self, text: str) -> None:
 
