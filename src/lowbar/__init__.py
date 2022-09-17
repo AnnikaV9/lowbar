@@ -157,7 +157,7 @@ class LowBar:
 
         self.completion = percentage
         self._update_bar()
-    
+
     def new(self) -> None:
 
         """
