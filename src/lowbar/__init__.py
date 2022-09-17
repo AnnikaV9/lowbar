@@ -50,6 +50,7 @@ class LowBar:
             raise TypeError("arg bar_blank_fill should be type str")
 
         self.bar_iter: object = bar_iter
+        self.smooth_iter: bool = smooth_iter
         self.completion: int = 1
         self.bar_load_fill: str = bar_load_fill
         self.bar_blank_fill: str = bar_blank_fill
@@ -90,7 +91,7 @@ class LowBar:
         try:
             for item in self.bar_iter:
                 yield item
-                self.update(int(div))
+                self.update(int(div)) if not self.smooth_iter else self.update_smooth(int(div))
                 div += add
 
         finally:
