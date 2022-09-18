@@ -6,7 +6,7 @@ lowbar<br />
 
 The simplest no-nonsense progress bar for python
 <br /><br />
-<img src="https://user-images.githubusercontent.com/68383195/184525688-43cdeb20-25eb-4302-b568-5b5079a2eb43.gif" width="80%"><br />
+<img src="https://user-images.githubusercontent.com/68383195/190890215-7b450696-dcd1-4911-b6e8-034d5fdf48c0.gif"><br />
 </div>
 
 <br />
@@ -44,7 +44,7 @@ import lowbar
 
 And initialize the bar:
 ```python3
-bar = lowbar.LowBar()
+bar = lowbar.lowbar()
 ```
 
 <br />
@@ -87,7 +87,7 @@ bar.clear()
 
 Here's an example usage of the bar:
 ```python3
-bar = lowbar.LowBar()
+bar = lowbar.lowbar()
 
 completion = 0
 bar.new()
@@ -105,7 +105,7 @@ print("Tasks complete!")
 
 You don't even need a loop:
 ```python3
-bar = lowbar.LowBar()
+bar = lowbar.lowbar()
 
 bar.new()
 time.sleep(1)
@@ -123,7 +123,7 @@ print("Tasks complete!")
 
 The bar can also be used with a context manager. It will automatically run `new()` at the start and `clear()` when exiting:
 ```python3
-with lowbar.LowBar() as bar:
+with lowbar.lowbar() as bar:
     time.sleep(1)
     bar.update_smooth(10)
     time.sleep(3)
@@ -134,9 +134,9 @@ print("Tasks complete!")
 
 <br />
 
-To make things *even* more simpler, you can wrap lowbar around an iterable. It will automatically calculate how much to increase the percentage by every loop:
+To make things even more simpler, you can wrap lowbar around an iterable. It will automatically calculate how much to increase the percentage by every loop:
 ```python3
-for i in lowbar.LowBar(range(100)):
+for i in lowbar.lowbar(range(100)):
     time.sleep(0.5)
 ```
 
@@ -144,7 +144,7 @@ for i in lowbar.LowBar(range(100)):
 
 lowbar will use `update()` by default when working with iterables. If you're only going to loop a few times, you can force lowbar to use `update_smooth()`:
 ```python3
-for i in lowbar.LowBar(range(6), smooth_iter=True):
+for i in lowbar.lowbar(range(6), smooth_iter=True):
     time.sleep(1)
 ```
 ***Note:** You can't use `log()` when using lowbar with an iterable.*
@@ -153,7 +153,7 @@ for i in lowbar.LowBar(range(6), smooth_iter=True):
 
 You can change the load fill and blank fill chars as well:
 ```python3
-bar = lowbar.LowBar(bar_load_fill="O", bar_blank_fill=".")
+bar = lowbar.lowbar(bar_load_fill="O", bar_blank_fill=".")
 ```
 
 <br />

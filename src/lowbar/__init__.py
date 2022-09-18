@@ -32,7 +32,7 @@ import time
 import threading
 
 
-class LowBar:
+class lowbar:
 
     """
     The main lowbar class.
@@ -227,3 +227,7 @@ class LowBar:
         self._block_when_smoothing()
 
         self._overwrite_bar()
+
+
+# Backwards compatibility with earlier versions
+LowBar = lowbar
