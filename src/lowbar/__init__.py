@@ -38,7 +38,7 @@ class lowbar:
     The main lowbar class.
     """
 
-    def __init__(self, bar_iter: object=None, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
+    def __init__(self, bar_iter: (range, int)=None, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
 
         """
         Initializes a few variables.
@@ -50,7 +50,16 @@ class lowbar:
         if not isinstance(bar_blank_fill, str):
             raise TypeError("arg bar_blank_fill should be type str")
 
-        self.bar_iter: object = bar_iter
+        if not isinstance(smooth_iter, bool):
+            raise TypeError("arg smooth_iter should be type bool")
+
+        if not isinstance(bar_iter, range):
+            if not isinstance(bar_iter, int):
+                raise TypeError("arg bar_iter should be either type range or int")
+
+            bar_iter: range = range(bar_iter)
+
+        self.bar_iter: range = bar_iter
         self.smooth_iter: bool = smooth_iter
         self.completion: int = 1
         self.bar_load_fill: str = bar_load_fill
@@ -133,7 +142,7 @@ class lowbar:
         Overwrite the loading bar with optional text.
         """
 
-        overwrite: str = (" " * (self._get_terminal_columns() - len(text)))
+        overwrite: str = " " * (self._get_terminal_columns() - len(text))
         self._print_internal(f"\r{text}{overwrite}")
 
     def _update_bar_smooth(self, percentage: int) -> None:
