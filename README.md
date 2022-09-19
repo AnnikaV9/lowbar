@@ -1,39 +1,67 @@
-<div align="center">
-<h1>
-lowbar<br />
-<a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/flake8.yml"><img src="https://img.shields.io/github/workflow/status/AnnikaV9/lowbar/Flake8?label=Flake8"></a> <a target="_blank" href="https://pypi.org/project/lowbar"><img src="https://img.shields.io/pypi/v/lowbar?label=PyPi&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/blob/master/LICENSE" title="License"><img src="https://img.shields.io/github/license/AnnikaV9/lowbar?label=License&color=blue"></a> <a target="_blank" href="https://pypi.org/project/lowbar"><img src="https://img.shields.io/badge/Python->=3.7-blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/blob/master/src/lowbar/__init__.py"><img src="https://img.shields.io/github/languages/code-size/AnnikaV9/lowbar?label=Code%20Size"></a> <a target="_blank" href="https://pepy.tech/project/lowbar"><img src="https://static.pepy.tech/personalized-badge/lowbar?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads"></a>
-</h1>
 
-The simplest no-nonsense progress bar for python
-<br /><br />
-<img src="https://user-images.githubusercontent.com/68383195/190890215-7b450696-dcd1-4911-b6e8-034d5fdf48c0.gif"><br />
-</div>
+# lowbar
+[![](https://img.shields.io/github/workflow/status/AnnikaV9/lowbar/Flake8?label=Flake8)](https://github.com/AnnikaV9/lowbar/actions/workflows/flake8.yml)
+[![](https://img.shields.io/pypi/v/lowbar?label=PyPi&color=blue)](https://pypi.org/project/lowbar)
+[![](https://img.shields.io/github/license/AnnikaV9/lowbar?label=License&color=blue)](https://github.com/AnnikaV9/lowbar/blob/master/LICENSE)
+[![](https://img.shields.io/badge/Python->=3.7-blue)](https://pypi.org/project/lowbar)
+[![](https://img.shields.io/github/languages/code-size/AnnikaV9/lowbar?label=Code%20Size)](https://github.com/AnnikaV9/lowbar/blob/master/src/lowbar/__init__.py)
+[![](https://static.pepy.tech/personalized-badge/lowbar?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/lowbar)
 
-<br />
-<br />
+The simplest no-nonsense progress bar for python.
 
-## Introduction
+
+![demo](https://user-images.githubusercontent.com/68383195/191001041-1018bc7c-57a1-4ae9-9ee9-8de84296a11a.gif)
+
+
 lowbar is a blazing fast module with zero dependencies for displaying an automatically resizing progress bar in the terminal. It has a low number of features and a simple codebase, hence the name lowbar.
 
 <br />
+
+#### lowbar has:
+- Automatic resizing
+- Manual progress management
+- Automatic progress management (As an iterable)
+- Text logging
+- Extremely low overhead
+- Small package size
+
+#### lowbar doesn't have:
+- Nested bars
+- Fancy animations
+- ETA calculations
+
+<br />
+
+## Requirements
+
+<br />
+
+- Python 3.7 or above. lowbar may support earlier versions, but this has not been tested.
+- A console that supports line feed `\n` and carriage return `\r`.
+
 <br />
 
 ## Installation 
+
+<br />
+
 Install the latest stable release:
 ```
 pip install lowbar
 ```
+
 <br />
 
-Or the development version (Undocumented):
+Or the development version:
 ```
 pip install git+https://github.com/AnnikaV9/lowbar
 ```
 
 <br />
-<br />
 
 ## Usage
+
+<br />
 
 Once you have lowbar installed, you can import it like any other module:
 ```python3
@@ -142,7 +170,7 @@ for i in lowbar.lowbar(range(100)):
 
 <br />
 
-To make things even more simpler, you can pass an integer and lowbar will convert it into a range object automatically:
+To make things even more simpler, you can pass an integer and lowbar will convert it into a range object for you:
 ```python3
 for i in lowbar.lowbar(100):
     time.sleep(0.5)
@@ -164,9 +192,11 @@ bar = lowbar.lowbar(bar_load_fill="O", bar_blank_fill=".")
 ```
 
 <br />
-<br />
 
 ## Contributing
+
+<br />
+
 All contributions are welcome!
 
 If you wish to report a bug or suggest a feature, open an [issue](https://github.com/AnnikaV9/lowbar/issues).
@@ -180,9 +210,10 @@ See [CONTRIBUTING.md](https://github.com/AnnikaV9/lowbar/blob/master/CONTRIBUTIN
 Contributors are listed in [CONTRIBUTORS.md](https://github.com/AnnikaV9/lowbar/blob/master/CONTRIBUTORS.md).
 
 <br />
-<br />
 
 ## License
+
+<br />
 
 ```
 MIT License
