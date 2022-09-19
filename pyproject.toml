@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lowbar"
-version = "1.4.1"
+version = "1.4.2"
 authors = [
   { name="AnnikaV9", email="carrot.moncher@gmail.com" },
 ]
