@@ -38,7 +38,7 @@ class lowbar:
     The main lowbar class.
     """
 
-    def __init__(self, bar_iter: (range, int)=None, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
+    def __init__(self, bar_iter: (range, int)=0, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
 
         """
         Initializes a few variables.
