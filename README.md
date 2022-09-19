@@ -13,7 +13,7 @@ The simplest no-nonsense progress bar for python
 <br />
 
 ## Introduction
-lowbar is a blazing fast module with zero dependencies for displaying a progress bar in the terminal. It has a low number of features and a simple codebase, hence the name lowbar.
+lowbar is a blazing fast module with zero dependencies for displaying an automatically resizing progress bar in the terminal. It has a low number of features and a simple codebase, hence the name lowbar.
 
 <br />
 <br />
@@ -134,7 +134,7 @@ print("Tasks complete!")
 
 <br />
 
-To make things even more simpler, you can wrap lowbar around an iterable. It will automatically calculate how much to increase the percentage by every loop:
+To make things simpler, you can wrap lowbar around `range()` and turn it into an iterable. It will automatically calculate how much to increase the percentage by every loop:
 ```python3
 for i in lowbar.lowbar(range(100)):
     time.sleep(0.5)
@@ -142,16 +142,23 @@ for i in lowbar.lowbar(range(100)):
 
 <br />
 
-lowbar will use `update()` by default when working with iterables. If you're only going to loop a few times, you can force lowbar to use `update_smooth()`:
+To make things even more simpler, you can pass an integer and lowbar will convert it into a range object automatically:
 ```python3
-for i in lowbar.lowbar(range(6), smooth_iter=True):
+for i in lowbar.lowbar(100):
+    time.sleep(0.5)
+```
+<br />
+
+lowbar will use `update()` by default when used as an iterable. If you're only going to loop a few times, you can force lowbar to use `update_smooth()`:
+```python3
+for i in lowbar.lowbar(6, smooth_iter=True):
     time.sleep(1)
 ```
-***Note:** You can't use `log()` when using lowbar with an iterable.*
+***Note:** You can't use `log()` when using lowbar as an iterable.*
 
 <br />
 
-You can change the load fill and blank fill chars as well:
+You can also change the load fill and blank fill chars:
 ```python3
 bar = lowbar.lowbar(bar_load_fill="O", bar_blank_fill=".")
 ```
