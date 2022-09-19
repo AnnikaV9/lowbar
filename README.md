@@ -1,7 +1,7 @@
 <div align="center">
 <h1>
 lowbar<br />
-<a target="_blank" href="https://pypi.org/project/lowbar"><img src="https://img.shields.io/pypi/v/lowbar?label=PyPi&color=red"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/blob/master/LICENSE" title="License"><img src="https://img.shields.io/github/license/AnnikaV9/lowbar?label=License&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/flake8.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/flake8.yml/badge.svg"></a>
+<a target="_blank" href="https://github.com/AnnikaV9/lowbar/actions/workflows/flake8.yml"><img src="https://github.com/AnnikaV9/lowbar/actions/workflows/flake8.yml/badge.svg"></a> <a target="_blank" href="https://pypi.org/project/lowbar"><img src="https://img.shields.io/pypi/v/lowbar?label=PyPi&color=blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/blob/master/LICENSE" title="License"><img src="https://img.shields.io/github/license/AnnikaV9/lowbar?label=License&color=blue"></a> <a target="_blank" href="https://pypi.org/project/lowbar"><img src="https://img.shields.io/badge/Python->=3.7-blue"></a> <a target="_blank" href="https://github.com/AnnikaV9/lowbar/blob/master/src/lowbar/__init__.py"><img src="https://img.shields.io/github/languages/code-size/AnnikaV9/lowbar?label=Code%20Size"></a> <a target="_blank" href="https://pepy.tech/project/lowbar"><img src="https://static.pepy.tech/personalized-badge/lowbar?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads"></a>
 </h1>
 
 The simplest no-nonsense progress bar for python
