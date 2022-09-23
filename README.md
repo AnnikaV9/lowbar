@@ -198,7 +198,7 @@ Or add a description text to the left side of the bar:
 ```python3
 bar = lowbar.lowbar(bar_desc="Downloading...")
 ```
-***Note:** If the console is too small to accomodate both the bar and the description text, the text will be hidden.*
+***Note:** If the console is too small to accommodate both the bar and the description text, the text will be hidden.*
 
 <br />
 
@@ -214,7 +214,7 @@ Args:
 - smooth_iter: A boolean switch which forced lowbar to use `update_smooth()` when iterating. Default: `False`
 - bar_load_fill: A string of size 1, which will be used to fill the bar as it loads. Default: `"#"`
 - bar_blank_fill: A string of size 1, which will be used to fill the part of the bar that isn't loaded yet. Default: `"-"`
-- bar_desc: A string, which will be displayed to the left of the bar. If the console is too small to accomodate both the bar and the desc, the desc will be hidden. Default: `""`
+- bar_desc: A string, which will be displayed to the left of the bar. If the console is too small to accommodate both the bar and the desc, the desc will be hidden. Default: `""`
 - remove_ends: A boolean switch which will hide the chars placed at both ends of the bar (`[` & `]`). Default: `False`
 
 <br />
