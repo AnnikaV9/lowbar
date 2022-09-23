@@ -22,6 +22,7 @@ lowbar is a blazing fast module with zero dependencies for displaying a progress
 - Manual progress management
 - Automatic progress management (As an iterable)
 - Text logging
+- Bar customization
 - Extremely low overhead
 - Small package size
 
