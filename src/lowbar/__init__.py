@@ -41,7 +41,7 @@ class lowbar:
     def __init__(self, bar_iter: (range, int)=0, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
 
         """
-        Initializes a few variables.
+        Checks and initializes a few variables.
         """
 
         if not isinstance(bar_load_fill, str):
@@ -58,6 +58,12 @@ class lowbar:
                 raise TypeError("arg bar_iter should be either type range or int")
 
             bar_iter: range = range(bar_iter)
+
+        if len(bar_load_fill) != 1:
+            raise TypeError("arg bar_load_fill should be a single char")
+
+        if len(bar_blank_fill) != 1:
+            raise TypeError("arg bar_blank_fill should be a single char")
 
         self.bar_iter: range = bar_iter
         self.smooth_iter: bool = smooth_iter
