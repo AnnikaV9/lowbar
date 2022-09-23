@@ -208,8 +208,6 @@ bar = lowbar.lowbar(bar_desc="Downloading...")
 
 **`__init__()` &nbsp; - &nbsp; Init function thats called when the lowbar object is created.**
 
-Args:
-
 - bar_iter: A range object that lowbar will iterate through when `__iter__()` is called. If an integer is provided, lowbar will automatically convert it into a range object. Default: `0`
 - smooth_iter: A boolean switch which forced lowbar to use `update_smooth()` when iterating. Default: `False`
 - bar_load_fill: A string of size 1, which will be used to fill the bar as it loads. Default: `"#"`
@@ -225,23 +223,17 @@ Args:
 
 **`update()` &nbsp; - &nbsp; Increases or decreases the completed percentage and refreshes the bar, automatically resizing if the console size has changed.**
 
-Args:
-
 - percentage: An integer value to set the completed percentage as. No default value.
 
 <br />
 
 **`update_smooth()` &nbsp; - &nbsp; Same as `update()`, with a smoother but slower animation. Avoid using this function if execution speed is important for your. The completion percentage cannot be decreased with this function.**
 
-Args:
-
 - percentage: An integer value to set the completed percentage as. Must be higher than the currently set value. No default value.
 
 <br />
 
 **`log()` &nbsp; - &nbsp; Logs text to the console without affecting the bar.**
-
-Args:
 
 - text: Any string. Any other type needs to be converted with `str()` before being passed to this function. No default value.
 
