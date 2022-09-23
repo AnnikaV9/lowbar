@@ -198,6 +198,7 @@ Or add a description text to the left side of the bar:
 ```python3
 bar = lowbar.lowbar(bar_desc="Downloading...")
 ```
+***Note:** If the console is too small to accomodate both the bar and the description text, the text will be hidden. *
 
 <br />
 
