@@ -38,7 +38,7 @@ class lowbar:
     The main lowbar class.
     """
 
-    def __init__(self, bar_iter: (range, int)=0, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-") -> None:
+    def __init__(self, bar_iter: (range, int)=0, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-", bar_desc: str="", remove_ends: bool=False) -> None:
 
         """
         Checks and initializes a few variables.
@@ -52,6 +52,12 @@ class lowbar:
 
         if not isinstance(smooth_iter, bool):
             raise TypeError("arg smooth_iter should be type bool")
+
+        if not isinstance(bar_desc, str):
+            raise TypeError("arg bar_desc should be type str")
+
+        if not isinstance(remove_ends, bool):
+            raise TypeError("arg remove_ends should be type bool")
 
         if not isinstance(bar_iter, range):
             if not isinstance(bar_iter, int):
@@ -71,6 +77,8 @@ class lowbar:
         self.bar_load_fill: str = bar_load_fill
         self.bar_blank_fill: str = bar_blank_fill
         self.bar_is_smoothing: bool = False
+        self.bar_desc: str = bar_desc
+        self.bar_ends: str = ("[", "]") if not remove_ends else (" ", " ")
 
     def __enter__(self) -> object:
 
@@ -136,11 +144,12 @@ class lowbar:
         possibly resized console.
         """
 
-        completion_string: str = f" {str(self.completion)}" if self.completion < 10 else str(self.completion)
-        bar_size: int = self._get_terminal_columns() - (len(completion_string) + 6)
+        temp_desc = self.bar_desc if len(self.bar_desc) + 20 < self._get_terminal_columns() else ""
+        completion_string: str = f"{temp_desc}  {str(self.completion)}" if self.completion < 10 else f"{temp_desc} {str(self.completion)}"
+        bar_size: int = self._get_terminal_columns() - (len(completion_string) + 7)
         bar_loaded_size: int = int(bar_size * (self.completion / 100))
         bar_blank_fill: int = bar_size - bar_loaded_size
-        self._print_internal(f"\r{completion_string} % [{bar_loaded_size * self.bar_load_fill}{bar_blank_fill * self.bar_blank_fill}] ")
+        self._print_internal(f"\r{completion_string} % {self.bar_ends[0]}{bar_loaded_size * self.bar_load_fill}{bar_blank_fill * self.bar_blank_fill}{self.bar_ends[1]} ")
 
     def _overwrite_bar(self, text: str="") -> None:
 
@@ -163,7 +172,7 @@ class lowbar:
             del i
             self.completion += 1
             self._update_bar()
-            time.sleep(0.005)
+            time.sleep(0.002)
 
         self.bar_is_smoothing = False
 
