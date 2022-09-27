@@ -106,6 +106,7 @@ class lowbar:
             self.clear()
 
         else:
+            self._block_when_smoothing()
             print()
 
     def __iter__(self) -> object:
@@ -131,6 +132,7 @@ class lowbar:
                 self.clear()
 
             else:
+                self._block_when_smoothing()
                 print()
 
     def _print_internal(self, text: str) -> None:
