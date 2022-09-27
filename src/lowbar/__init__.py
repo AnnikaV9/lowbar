@@ -38,7 +38,7 @@ class lowbar:
     The main lowbar class.
     """
 
-    def __init__(self, bar_iter: (range, int)=0, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-", bar_desc: str="", remove_ends: bool=False) -> None:
+    def __init__(self, bar_iter: (range, int)=0, smooth_iter: bool=False, bar_load_fill: str="#", bar_blank_fill: str="-", bar_desc: str="", remove_ends: bool=False, no_clear: bool=False) -> None:
 
         """
         Checks and initializes a few variables.
@@ -58,6 +58,9 @@ class lowbar:
 
         if not isinstance(remove_ends, bool):
             raise TypeError("arg remove_ends should be type bool")
+
+        if not isinstance(no_clear, bool):
+            raise TypeError("arg no_clear should be type bool")
 
         if not isinstance(bar_iter, range):
             if not isinstance(bar_iter, int):
@@ -79,6 +82,7 @@ class lowbar:
         self.bar_is_smoothing: bool = False
         self.bar_desc: str = bar_desc
         self.bar_ends: str = ("[", "]") if not remove_ends else (" ", " ")
+        self.no_clear: bool = no_clear
 
     def __enter__(self) -> object:
 
@@ -98,7 +102,8 @@ class lowbar:
         without requiring clear().
         """
 
-        self.clear()
+        if not self.no_clear:
+            self.clear()
 
     def __iter__(self) -> object:
 
@@ -119,7 +124,8 @@ class lowbar:
                 div += add
 
         finally:
-            self.clear()
+            if not self.no_clear:
+                self.clear()
 
     def _print_internal(self, text: str) -> None:
 
