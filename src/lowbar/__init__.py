@@ -105,6 +105,9 @@ class lowbar:
         if not self.no_clear:
             self.clear()
 
+        else:
+            print()
+
     def __iter__(self) -> object:
 
         """
@@ -126,6 +129,9 @@ class lowbar:
         finally:
             if not self.no_clear:
                 self.clear()
+
+            else:
+                print()
 
     def _print_internal(self, text: str) -> None:
 
