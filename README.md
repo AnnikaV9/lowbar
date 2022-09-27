@@ -202,44 +202,45 @@ bar = lowbar.lowbar(bar_desc="Downloading...")
 
 <br />
 
-## Arguments
+## Parameters
 
 <br />
 
-**`__init__()` &nbsp; - &nbsp; Init function thats called when the lowbar object is created.**
+- **`__init__()` &nbsp; - &nbsp; Init function thats called when the lowbar object is created.**
 
-- bar_iter: A range object that lowbar will iterate through when `__iter__()` is called. If an integer is provided, lowbar will automatically convert it into a range object. Default: `0`
-- smooth_iter: A boolean switch which forced lowbar to use `update_smooth()` when iterating. Default: `False`
-- bar_load_fill: A string of size 1, which will be used to fill the bar as it loads. Default: `"#"`
-- bar_blank_fill: A string of size 1, which will be used to fill the part of the bar that isn't loaded yet. Default: `"-"`
-- bar_desc: A string, which will be displayed to the left of the bar. If the console is too small to accommodate both the bar and the desc, the desc will be hidden. Default: `""`
-- remove_ends: A boolean switch which will hide the chars placed at both ends of the bar (`[` & `]`). Default: `False`
-
-<br />
-
-**`new()` &nbsp; - &nbsp; Alias for `update(0)`**
+  - bar_iter: A range object that lowbar will iterate through when `__iter__()` is called. If an integer is provided, lowbar will automatically convert it into a range object. Default: `0`
+  - smooth_iter: A boolean switch which forced lowbar to use `update_smooth()` when iterating. Default: `False`
+  - bar_load_fill: A string of size 1, which will be used to fill the bar as it loads. Default: `"#"`
+  - bar_blank_fill: A string of size 1, which will be used to fill the part of the bar that isn't loaded yet. Default: `"-"`
+  - bar_desc: A string, which will be displayed to the left of the bar. If the console is too small to accommodate both the bar and the desc, the desc will be hidden. Default: `""`
+  - remove_ends: A boolean switch which will hide the chars placed at both ends of the bar (`[` & `]`). Default: `False`
+  - no_clear: A boolean switch which will stop lowbar from clearing the bar automatically when used as an iterable or with a context manager. Useful if you want a 'receipt'. Default: `False`
 
 <br />
 
-**`update()` &nbsp; - &nbsp; Increases or decreases the completed percentage and refreshes the bar, automatically resizing if the console size has changed.**
-
-- percentage: An integer value to set the completed percentage as. No default value.
+- **`new()` &nbsp; - &nbsp; Alias for `update(0)`**
 
 <br />
 
-**`update_smooth()` &nbsp; - &nbsp; Same as `update()`, with a smoother but slower animation. Avoid using this function if execution speed is important for your. The completion percentage cannot be decreased with this function.**
+- **`update()` &nbsp; - &nbsp; Increases or decreases the completed percentage and refreshes the bar, automatically resizing if the console size has changed.**
 
-- percentage: An integer value to set the completed percentage as. Must be higher than the currently set value. No default value.
-
-<br />
-
-**`log()` &nbsp; - &nbsp; Logs text to the console without affecting the bar.**
-
-- text: Any string. Any other type needs to be converted with `str()` before being passed to this function. No default value.
+  - percentage: An integer value to set the completed percentage as. No default value.
 
 <br />
 
-**`clear()` &nbsp; - &nbsp; Clears the currently running bar.**
+- **`update_smooth()` &nbsp; - &nbsp; Same as `update()`, with a smoother but slower animation. Avoid using this function if execution speed is important for you. The completion percentage cannot be decreased with this function.**
+
+  - percentage: An integer value to set the completed percentage as. Must be higher than the currently set value. No default value.
+
+<br />
+
+- **`log()` &nbsp; - &nbsp; Logs text to the console without affecting the bar.**
+
+  - text: Any string. Any other type needs to be converted with `str()` before being passed to this function. No default value.
+
+<br />
+
+- **`clear()` &nbsp; - &nbsp; Clears the currently running bar.**
 
 <br />
 
