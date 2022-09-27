@@ -9,8 +9,8 @@
 
 The simplest no-nonsense progress bar for python.
 
-
-![demo](https://user-images.githubusercontent.com/68383195/191001041-1018bc7c-57a1-4ae9-9ee9-8de84296a11a.gif)
+![demo1](https://user-images.githubusercontent.com/68383195/192413048-58a6615b-145e-43b2-9bba-f697d9b54bff.gif)
+![demo2](https://user-images.githubusercontent.com/68383195/192413064-21829e32-eefa-42eb-9ef4-0b3eff12a7fd.gif)
 
 
 lowbar is a blazing fast module with zero dependencies for displaying a progress bar in the terminal. It has a low number of features and a simple codebase, hence the name lowbar.
