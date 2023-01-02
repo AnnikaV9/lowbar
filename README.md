@@ -1,6 +1,6 @@
 
 # lowbar
-[![](https://img.shields.io/github/workflow/status/AnnikaV9/lowbar/Flake8?label=Flake8)](https://github.com/AnnikaV9/lowbar/actions/workflows/flake8.yml)
+[![](https://img.shields.io/github/actions/workflow/status/AnnikaV9/lowbar/flake8.yml?label=Flake8)](https://github.com/AnnikaV9/lowbar/actions/workflows/flake8.yml)
 [![](https://img.shields.io/pypi/v/lowbar?label=PyPi&color=blue)](https://pypi.org/project/lowbar)
 [![](https://img.shields.io/github/license/AnnikaV9/lowbar?label=License&color=blue)](https://github.com/AnnikaV9/lowbar/blob/master/LICENSE)
 [![](https://img.shields.io/badge/Python->=3.7-blue)](https://pypi.org/project/lowbar)
