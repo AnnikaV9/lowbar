@@ -209,7 +209,7 @@ bar = lowbar.lowbar(bar_desc="Downloading...")
 - **`__init__()` &nbsp; - &nbsp; Init function thats called when the lowbar object is created.**
 
   - bar_iter: A range object that lowbar will iterate through when `__iter__()` is called. If an integer is provided, lowbar will automatically convert it into a range object. Default: `0`
-  - smooth_iter: A boolean switch which forced lowbar to use `update_smooth()` when iterating. Default: `False`
+  - smooth_iter: A boolean switch which forces lowbar to use `update_smooth()` when iterating. Default: `False`
   - bar_load_fill: A string of size 1, which will be used to fill the bar as it loads. Default: `"#"`
   - bar_blank_fill: A string of size 1, which will be used to fill the part of the bar that isn't loaded yet. Default: `"-"`
   - bar_desc: A string, which will be displayed to the left of the bar. If the console is too small to accommodate both the bar and the desc, the desc will be hidden. Default: `""`
