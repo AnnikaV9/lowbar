@@ -252,7 +252,7 @@ class lowbar:
 
         self._block_when_smoothing()
 
-        self._overwrite_bar(f"{text}")
+        self._overwrite_bar(text)
         print()
         self._update_bar()
 
