@@ -15,8 +15,6 @@ The simplest no-nonsense progress bar for python.
 
 lowbar is a blazing fast module with zero dependencies for displaying a progress bar in the terminal. It has a low number of features and a simple codebase, hence the name lowbar.
 
-<br />
-
 #### lowbar has:
 - Automatic resizing
 - Manual progress management
@@ -31,66 +29,46 @@ lowbar is a blazing fast module with zero dependencies for displaying a progress
 - Fancy animations
 - ETA calculations
 
-<br />
+<br>
 
 ## Requirements
-
-<br />
-
 - Python 3.7 or above. lowbar may support earlier versions, but this has not been tested.
 - A console that supports line feed `\n` and carriage return `\r`.
 
-<br />
+<br>
 
 ## Installation 
-
-<br />
-
 Install the latest stable release:
 ```
 pip install lowbar
 ```
-
-<br />
-
 Or the development version:
 ```
 pip install git+https://github.com/AnnikaV9/lowbar
 ```
 
-<br />
+<br>
 
 ## Usage
-
-<br />
-
 Once you have lowbar installed, you can import it like any other module:
 ```python3
 import lowbar
 ```
-
-<br />
 
 And initialize the bar:
 ```python3
 bar = lowbar.lowbar()
 ```
 
-<br />
-
 To make the bar visible and set at 0%:
 ```python3
 bar.new()
 ```
 
-<br />
-
 After completing some tasks, we can increase the bar's completion percentage:
 ```python3
 bar.update(20)
 ```
-
-<br />
 
 The above function will immediately move the bar to 20%. To use a more smoother but slower animation:
 ```python3
@@ -98,21 +76,15 @@ bar.update_smooth(40)
 ```
 ***Note:** Since version 1.1.4, `update_smooth()` is no-longer fully blocking. It will run in a separate thread, so your program will continue it's execution while the bar is animating. However, calling another lowbar function during the animation will block the main thread to prevent visual glitches. To avoid this block, make sure to call `log()` before `update_smooth()`, not after. See issue [#5](https://github.com/AnnikaV9/lowbar/issues/5)*
 
-<br />
-
 Using `print()` or other similar functions will push the bar up, which doesn't look nice. To log messages without affecting the bar:
 ```python3
 bar.log("Hello World!")
 ```
 
-<br />
-
 And finally, to clear the bar completely:
 ```python3
 bar.clear()
 ```
-
-<br />
 
 Here's an example usage of the bar:
 ```python3
@@ -130,8 +102,6 @@ bar.clear()
 print("Tasks complete!")
 ```
 
-<br />
-
 You don't even need a loop:
 ```python3
 bar = lowbar.lowbar()
@@ -148,8 +118,6 @@ bar.clear()
 print("Tasks complete!")
 ```
 
-<br />
-
 The bar can also be used with a context manager. It will automatically run `new()` at the start and `clear()` when exiting:
 ```python3
 with lowbar.lowbar() as bar:
@@ -161,52 +129,43 @@ with lowbar.lowbar() as bar:
 print("Tasks complete!")
 ```
 
-<br />
-
 To make things simpler, you can wrap lowbar around `range()` and turn it into an iterable. It will automatically calculate how much to increase the percentage by every loop:
 ```python3
 for i in lowbar.lowbar(range(100)):
     time.sleep(0.5)
 ```
 
-<br />
-
 To make things even more simpler, you can pass an integer and lowbar will convert it into a range object for you:
 ```python3
 for i in lowbar.lowbar(100):
     time.sleep(0.5)
 ```
-<br />
 
 lowbar will use `update()` by default when used as an iterable. If you're only going to loop a few times, you can force lowbar to use `update_smooth()`:
 ```python3
 for i in lowbar.lowbar(6, smooth_iter=True):
     time.sleep(1)
 ```
-***Note:** You can't use `log()` when using lowbar as an iterable.*
-
-<br />
+> [!NOTE]
+> You can't use `log()` when using lowbar as an iterable.
 
 You can also change the load fill and blank fill chars:
 ```python3
 bar = lowbar.lowbar(bar_load_fill="O", bar_blank_fill=".")
 ```
 
-<br />
-
 Or add a description text to the left side of the bar:
 ```python3
 bar = lowbar.lowbar(bar_desc="Downloading...")
 ```
-***Note:** If the console is too small to accommodate both the bar and the description text, the text will be hidden.*
+> [!NOTE]
+> If the console is too small to accommodate both the bar and the description text, the text will be hidden.
 
-<br />
+<br>
 
 ## Parameters
 
-<br />
-
-- **`__init__()` &nbsp; - &nbsp; Init function thats called when the lowbar object is created.**
+- `__init__()` &nbsp; - &nbsp; **Init function thats called when the lowbar object is created.**
 
   - bar_iter: A range object that lowbar will iterate through when `__iter__()` is called. If an integer is provided, lowbar will automatically convert it into a range object. Default: `0`
   - smooth_iter: A boolean switch which forces lowbar to use `update_smooth()` when iterating. Default: `False`
@@ -216,38 +175,25 @@ bar = lowbar.lowbar(bar_desc="Downloading...")
   - remove_ends: A boolean switch which will hide the chars placed at both ends of the bar (`[` & `]`). Default: `False`
   - no_clear: A boolean switch which will stop lowbar from clearing the bar automatically when used as an iterable or with a context manager. Useful if you want a 'receipt'. Default: `False`
 
-<br />
+- `new()` &nbsp; - &nbsp; **Alias for `update(0)`**
 
-- **`new()` &nbsp; - &nbsp; Alias for `update(0)`**
-
-<br />
-
-- **`update()` &nbsp; - &nbsp; Increases or decreases the completed percentage and refreshes the bar, automatically resizing if the console size has changed.**
+- `update()` &nbsp; - &nbsp; **Increases or decreases the completed percentage and refreshes the bar, automatically resizing if the console size has changed.**
 
   - percentage: An integer value to set the completed percentage as. No default value.
 
-<br />
-
-- **`update_smooth()` &nbsp; - &nbsp; Same as `update()`, with a smoother but slower animation. Avoid using this function if execution speed is important for you. The completion percentage cannot be decreased with this function.**
+- `update_smooth()` &nbsp; - &nbsp; **Same as `update()`, with a smoother but slower animation. Avoid using this function if execution speed is important for you. The completion percentage cannot be decreased with this function.**
 
   - percentage: An integer value to set the completed percentage as. Must be higher than the currently set value. No default value.
 
-<br />
-
-- **`log()` &nbsp; - &nbsp; Logs text to the console without affecting the bar.**
+- `log()` &nbsp; - &nbsp; **Logs text to the console without affecting the bar.**
 
   - text: Any string. Any other type needs to be converted with `str()` before being passed to this function. No default value.
 
-<br />
+- `clear()` &nbsp; - &nbsp; **Clears the currently running bar.**
 
-- **`clear()` &nbsp; - &nbsp; Clears the currently running bar.**
-
-<br />
+<br>
 
 ## Contributing
-
-<br />
-
 All contributions are welcome!
 
 If you wish to report a bug or suggest a feature, open an [issue](https://github.com/AnnikaV9/lowbar/issues).
@@ -258,12 +204,9 @@ See [CONTRIBUTING.md](https://github.com/AnnikaV9/lowbar/blob/master/CONTRIBUTIN
 
 Contributors are listed in [CONTRIBUTORS.md](https://github.com/AnnikaV9/lowbar/blob/master/CONTRIBUTORS.md).
 
-<br />
+<br>
 
 ## License
-
-<br />
-
 ```
 MIT License
 
