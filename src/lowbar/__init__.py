@@ -12,7 +12,7 @@ class lowbar:
     def __init__(self, bar_iter: range | int = 0, bar_load_fill: str = "#",
                  bar_blank_fill: str = "-", bar_desc: str = "",
                  remove_ends: bool = False, no_clear: bool = False,
-                 smooth_iter = False  # backwards compatibility (no effect)
+                 smooth_iter=False  # backwards compatibility (no effect)
                  ) -> None:
         """
         Checks and initializes the bar with the given
