@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "lowbar"
-version = "1.6.0"
+version = "2.0.0"
 authors = [
   { name="AnnikaV9", email="carrot.moncher@gmail.com" },
 ]
@@ -35,5 +35,6 @@ classifiers = [
 
 [project.urls]
 "Homepage" = "https://github.com/AnnikaV9/lowbar"
+"Repository" = "https://github.com/AnnikaV9/lowbar"
 "Bug Tracker" = "https://github.com/AnnikaV9/lowbar/issues"
 "Changelog" = "https://github.com/AnnikaV9/lowbar/releases"

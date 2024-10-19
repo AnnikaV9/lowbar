@@ -9,10 +9,6 @@
 
 The simplest no-nonsense progress bar for python.
 
-
-![demo](https://user-images.githubusercontent.com/68383195/192450722-9a98f90a-ae0f-4079-a1e0-c37c597cce82.gif)
-
-
 lowbar is a blazing fast module with zero dependencies for displaying a progress bar in the terminal. It has a low number of features and a simple codebase, hence the name lowbar.
 
 #### lowbar has:
@@ -20,9 +16,9 @@ lowbar is a blazing fast module with zero dependencies for displaying a progress
 - Manual progress management
 - Automatic progress management (As an iterable)
 - Text logging
-- Bar customization
-- Extremely low overhead
-- Small package size
+- Bar styling
+- Low overhead
+- Small size ( < 150 lines)
 
 #### lowbar doesn't have:
 - Nested bars
@@ -46,12 +42,12 @@ pip install git+https://github.com/AnnikaV9/lowbar
 ## Usage
 Once you have lowbar installed, you can import it like any other module:
 ```python3
-import lowbar
+from lowbar import lowbar
 ```
 
 And initialize the bar:
 ```python3
-bar = lowbar.lowbar()
+bar = lowbar()
 ```
 
 To make the bar visible and set at 0%:
@@ -76,8 +72,6 @@ bar.clear()
 
 Here's an example usage of the bar:
 ```python3
-bar = lowbar.lowbar()
-
 completion = 0
 bar.new()
 for i in range(10):
@@ -92,8 +86,6 @@ print("Tasks complete!")
 
 You don't even need a loop:
 ```python3
-bar = lowbar.lowbar()
-
 bar.new()
 time.sleep(1)  # task
 bar.update(10)
@@ -108,7 +100,7 @@ print("Tasks complete!")
 
 The bar can also be used with a context manager. It will automatically run `new()` at the start and `clear()` when exiting:
 ```python3
-with lowbar.lowbar() as bar:
+with lowbar() as bar:
     time.sleep(1)  # task
     bar.update(10)
     time.sleep(3)  # task
@@ -119,13 +111,13 @@ print("Tasks complete!")
 
 To make things simpler, you can wrap lowbar around `range()` and turn it into an iterable. It will automatically calculate how much to increase the percentage by every loop:
 ```python3
-for i in lowbar.lowbar(range(100)):
+for i in lowbar(range(100)):
     time.sleep(0.5)  # task
 ```
 
 To make things even more simpler, you can pass an integer and lowbar will convert it into a range object for you:
 ```python3
-for i in lowbar.lowbar(100):
+for i in lowbar(100):
     time.sleep(0.5)  # task
 ```
 > [!NOTE]
@@ -133,12 +125,12 @@ for i in lowbar.lowbar(100):
 
 You can also change the load fill and blank fill chars:
 ```python3
-bar = lowbar.lowbar(bar_load_fill="O", bar_blank_fill=".")
+bar = lowbar(load_fill="O", blank_fill=".")
 ```
 
 Or add a description text to the left side of the bar:
 ```python3
-bar = lowbar.lowbar(bar_desc="Downloading...")
+bar = lowbar(desc="Downloading...")
 ```
 > [!NOTE]
 > If the console is too small to accommodate both the bar and the description text, the text will be hidden.
@@ -148,14 +140,14 @@ bar = lowbar.lowbar(bar_desc="Downloading...")
 #### `__init__()`
 Called when the `lowbar` object is created.
 
-| Parameter         | Type    | Description                                                                                                                   | Default  |
-|-------------------|---------|-------------------------------------------------------------------------------------------------------------------------------|----------|
+| Parameter         | Type    | Description                                                                                                                                         | Default  |
+|-------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 | `bar_iter`        | `range` | A range object that `lowbar` will iterate through when `__iter__()` is called. If an integer is provided, `lowbar` converts it into a range object. | `0`      |
-| `bar_load_fill`   | `str`   | A single-character string used to fill the bar as it loads.                                                                    | `"#"`    |
-| `bar_blank_fill`  | `str`   | A single-character string used to fill the unloaded part of the bar.                                                           | `"-"`    |
-| `bar_desc`        | `str`   | Text displayed to the left of the bar. If the console is too small, this text will be hidden.                                  | `""`     |
-| `remove_ends`     | `bool`  | Hides the characters at both ends of the bar (`[` & `]`).                                                                      | `False`  |
-| `no_clear`        | `bool`  | Prevents `lowbar` from automatically clearing the bar after completion (useful for keeping the progress bar as a 'receipt').   | `False`  |
+| `load_fill`       | `str`   | A single-character string used to fill the bar as it loads.                                                                                         | `"#"`    |
+| `blank_fill`      | `str`   | A single-character string used to fill the unloaded part of the bar.                                                                                | `"-"`    |
+| `desc`            | `str`   | Text displayed to the left of the bar. If the console is too small, this text will be hidden.                                                       | `""`     |
+| `remove_ends`     | `bool`  | Hides the characters at both ends of the bar (`[` & `]`).                                                                                           | `False`  |
+| `keep_receipt`    | `bool`  | Prevents `lowbar` from automatically clearing the bar after completion (useful for keeping the progress bar as a 'receipt').                        | `False`  |
 
 #### `new()`
 Alias for `update(0)`.
@@ -170,8 +162,8 @@ Increases or decreases the completed percentage and refreshes the bar, resizing 
 #### `log()`
 Logs text to the console without affecting the bar.
 
-| Parameter    | Type   | Description                                                             | Default         |
-|--------------|--------|-------------------------------------------------------------------------|-----------------|
+| Parameter    | Type   | Description                                                              | Default         |
+|--------------|--------|--------------------------------------------------------------------------|-----------------|
 | `text`       | `str`  | The text to log. Other types must be converted to strings before logging.| *No default*    |
 
 #### `clear()`

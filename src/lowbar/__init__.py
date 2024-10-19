@@ -9,29 +9,27 @@ class lowbar:
     """
     The main lowbar class.
     """
-    def __init__(self, bar_iter: range | int = 0, bar_load_fill: str = "#",
-                 bar_blank_fill: str = "-", bar_desc: str = "",
-                 remove_ends: bool = False, no_clear: bool = False,
-                 smooth_iter=False  # backwards compatibility (no effect)
-                 ) -> None:
+    def __init__(self, bar_iter: range | int = 0, desc: str = "",
+                 load_fill: str = "#", blank_fill: str = "-",
+                 remove_ends: bool = False, keep_receipt: bool = False) -> None:
         """
         Checks and initializes the bar with the given
         parameters.
         """
-        if not isinstance(bar_load_fill, str):
-            raise TypeError("arg bar_load_fill should be type str")
+        if not isinstance(load_fill, str) or len(load_fill) != 1:
+            raise TypeError("arg load_fill should be a single char str")
 
-        if not isinstance(bar_blank_fill, str):
-            raise TypeError("arg bar_blank_fill should be type str")
+        if not isinstance(blank_fill, str) or len(blank_fill) != 1:
+            raise TypeError("arg blank_fill should be a single char str")
 
-        if not isinstance(bar_desc, str):
-            raise TypeError("arg bar_desc should be type str")
+        if not isinstance(desc, str):
+            raise TypeError("arg desc should be type str")
 
         if not isinstance(remove_ends, bool):
             raise TypeError("arg remove_ends should be type bool")
 
-        if not isinstance(no_clear, bool):
-            raise TypeError("arg no_clear should be type bool")
+        if not isinstance(keep_receipt, bool):
+            raise TypeError("arg keep_receipt should be type bool")
 
         if not isinstance(bar_iter, range):
             if not isinstance(bar_iter, int):
@@ -39,19 +37,13 @@ class lowbar:
 
             bar_iter = range(bar_iter)
 
-        if len(bar_load_fill) != 1:
-            raise TypeError("arg bar_load_fill should be a single char")
-
-        if len(bar_blank_fill) != 1:
-            raise TypeError("arg bar_blank_fill should be a single char")
-
         self.bar_iter = bar_iter
         self.completion = 1
-        self.bar_load_fill = bar_load_fill
-        self.bar_blank_fill = bar_blank_fill
-        self.bar_desc = bar_desc
+        self.load_fill = load_fill
+        self.blank_fill = blank_fill
+        self.desc = desc
         self.bar_ends = ("[", "]") if not remove_ends else (" ", " ")
-        self.no_clear = no_clear
+        self.keep_receipt = keep_receipt
 
     def __enter__(self) -> object:
         """
@@ -66,7 +58,7 @@ class lowbar:
         Context manager exit to clear the bar automatically
         without requiring clear().
         """
-        print() if not self.no_clear else self.clear()
+        print() if self.keep_receipt else self.clear()
 
     def __iter__(self) -> object:
         """
@@ -83,7 +75,7 @@ class lowbar:
                 div += add
 
         finally:
-            self.clear() if not self.no_clear else print()
+            print() if self.keep_receipt else self.clear()
 
     def _print(self, text: str) -> None:
         """
@@ -102,12 +94,12 @@ class lowbar:
         Refreshes the current bar with new values, and a
         possibly resized console.
         """
-        temp_desc = self.bar_desc if len(self.bar_desc) + 20 < self._get_columns() else ""
-        completion_string = f"{temp_desc}  {str(self.completion)}" if self.completion < 10 else f"{temp_desc} {str(self.completion)}"
-        bar_size = self._get_columns() - (len(completion_string) + 7)
-        bar_loaded_size = int(bar_size * (self.completion / 100))
-        bar_blank_fill = bar_size - bar_loaded_size
-        self._print(f"\r{completion_string} % {self.bar_ends[0]}{bar_loaded_size * self.bar_load_fill}{bar_blank_fill * self.bar_blank_fill}{self.bar_ends[1]} ")
+        desc = self.desc if len(self.desc) + 20 < self._get_columns() else ""
+        label = f"{desc}  {str(self.completion)}" if self.completion < 10 else f"{desc} {str(self.completion)}"
+        size = self._get_columns() - (len(label) + 7)
+        load_size = int(size * (self.completion / 100))
+        bar_blank_fill = size - load_size
+        self._print(f"\r{label} % {self.bar_ends[0]}{load_size * self.load_fill}{bar_blank_fill * self.blank_fill}{self.bar_ends[1]} ")
 
     def _overwrite_bar(self, text: str = "") -> None:
         """
@@ -126,8 +118,6 @@ class lowbar:
 
         self.completion = percentage
         self._update_bar()
-
-    update_smooth = update  # backwards compatibility
 
     def new(self) -> None:
         """
@@ -151,7 +141,3 @@ class lowbar:
         Clears the bar completely from the console.
         """
         self._overwrite_bar()
-
-
-# backwards compatibility
-LowBar = lowbar
