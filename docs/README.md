@@ -1,10 +1,11 @@
 
 # lowbar
-The simplest no-nonsense progress bar for python.
+The simplest no-nonsense progress bar for python.  
+<sub>Jump to the [API reference](https://github.com/AnnikaV9/lowbar/wiki/Reference)</sub>
 
 ![Preview GIF](https://github.com/user-attachments/assets/335b85ae-5bdf-48cc-9192-d63770aeb17b)
 
-lowbar is a blazing fast module with zero dependencies for displaying a progress bar in the terminal. It has a low number of features and a simple codebase, hence the name lowbar.
+lowbar is a blazing fast module with zero dependencies for displaying a progress bar in the terminal. It has a low number of features and a simple codebase, hence the name lowbar. 
 
 #### lowbar has:
 - Automatic resizing
@@ -143,7 +144,7 @@ bar = lowbar(desc="Downloading...")
 
 <br>
 
-**See the [reference](https://github.com/AnnikaV9/lowbar/wiki/Reference) for more details.**
+**See the [API reference](https://github.com/AnnikaV9/lowbar/wiki/Reference)**
 
 ## Contributing
 All contributions are welcome!
@@ -152,9 +153,9 @@ If you wish to report a bug or suggest a feature, open an [issue](https://github
 
 You can also make a [pull request](https://github.com/AnnikaV9/lowbar/pulls) directly if you already have the fix for a bug.
 
-See [CONTRIBUTING.md](../docs/CONTRIBUTING.md) for guidelines to follow.
+See [CONTRIBUTING.md](https://github.com/AnnikaV9/lowbar/blob/master/docs/CONTRIBUTING.md) for guidelines to follow.
 
-Contributors are listed in [CONTRIBUTORS.md](../docs/CONTRIBUTORS.md).
+Contributors are listed in [CONTRIBUTORS.md](https://github.com/AnnikaV9/lowbar/blob/master/docs/CONTRIBUTORS.md).
 
 ## License
-This project is licensed under the [MIT License](../LICENSE).
+This project is licensed under the [MIT License](https://github.com/AnnikaV9/lowbar/blob/master/LICENSE).
