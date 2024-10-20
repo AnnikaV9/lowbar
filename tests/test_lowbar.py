@@ -27,7 +27,7 @@ class TestLowbar(unittest.TestCase):
         self.assertIn("\r 20 % [########-----------------------------------] ", mock_stdout.getvalue())
         self.assertIn("\r 50 % [#####################----------------------] ", mock_stdout.getvalue())
         self.assertIn("\r 100 % [##########################################] ", mock_stdout.getvalue())
-        self.assertIn("\r                                                    ", mock_stdout.getvalue())
+        self.assertIn("\r                                                     ", mock_stdout.getvalue())
 
     @patch("shutil.get_terminal_size")
     @patch("sys.stdout", new_callable=StringIO)
@@ -71,29 +71,49 @@ class TestLowbar(unittest.TestCase):
     @patch('sys.stdout', new_callable=StringIO)
     def test_iterable(self, mock_stdout, mock_terminal_size):
         mock_terminal_size.return_value = terminal_size((53, 20))
-        for _ in lowbar(5, keep_receipt=True):
+        for _ in lowbar(3, keep_receipt=True):
             pass
 
         self.assertIn("\r  0 % [-------------------------------------------] ", mock_stdout.getvalue())
-        self.assertIn("\r 20 % [########-----------------------------------] ", mock_stdout.getvalue())
-        self.assertIn("\r 40 % [#################--------------------------] ", mock_stdout.getvalue())
-        self.assertIn("\r 60 % [#########################------------------] ", mock_stdout.getvalue())
-        self.assertIn("\r 80 % [##################################---------] ", mock_stdout.getvalue())
+        self.assertIn("\r 33 % [##############-----------------------------] ", mock_stdout.getvalue())
+        self.assertIn("\r 66 % [############################---------------] ", mock_stdout.getvalue())
         self.assertIn("\r 100 % [##########################################] \n", mock_stdout.getvalue())
 
     @patch("shutil.get_terminal_size")
     @patch('sys.stdout', new_callable=StringIO)
+    def test_iterable_no_receipt(self, mock_stdout, mock_terminal_size):
+        mock_terminal_size.return_value = terminal_size((53, 20))
+        for _ in lowbar(3):
+            pass
+
+        self.assertIn("\r  0 % [-------------------------------------------] ", mock_stdout.getvalue())
+        self.assertIn("\r 33 % [##############-----------------------------] ", mock_stdout.getvalue())
+        self.assertIn("\r 66 % [############################---------------] ", mock_stdout.getvalue())
+        self.assertIn("\r 100 % [##########################################] ", mock_stdout.getvalue())
+        self.assertIn("\r                                                     ", mock_stdout.getvalue())
+
+    @patch("shutil.get_terminal_size")
+    @patch('sys.stdout', new_callable=StringIO)
     def test_context_manager(self, mock_stdout, mock_terminal_size):
+        mock_terminal_size.return_value = terminal_size((53, 20))
+        with lowbar(keep_receipt=True) as bar:
+            bar.update(100)
+
+        self.assertIn("\r  0 % [-------------------------------------------] ", mock_stdout.getvalue())
+        self.assertIn("\r 100 % [##########################################] \n", mock_stdout.getvalue())
+
+    @patch("shutil.get_terminal_size")
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_context_manager_no_receipt(self, mock_stdout, mock_terminal_size):
         mock_terminal_size.return_value = terminal_size((53, 20))
         with lowbar() as bar:
             bar.update(100)
 
         self.assertIn("\r  0 % [-------------------------------------------] ", mock_stdout.getvalue())
         self.assertIn("\r 100 % [##########################################] ", mock_stdout.getvalue())
-        self.assertIn("\r                                                    ", mock_stdout.getvalue())
+        self.assertIn("\r                                                     ", mock_stdout.getvalue())
 
-    @patch('sys.stdout', new_callable=StringIO)
-    def test_errors(self, mock_stdout):
+    def test_errors(self):
         with self.assertRaises(TypeError):
             bar = lowbar("invalid iter type")
 
