@@ -133,6 +133,16 @@ class lowbar:
         self.completion = 0 if self.completion < 0 else self.completion
         self._update_bar()
 
+    def next(self, tasks: int) -> None:
+        """
+        Automatically adds to the completion percentage based
+        on the number of tasks to be completed.
+        """
+        if not isinstance(tasks, int):
+            raise TypeError("arg tasks should be type int")
+
+        self.add(int(100 / tasks))
+
     def new(self) -> None:
         """
         Alias for update(0)

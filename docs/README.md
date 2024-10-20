@@ -60,6 +60,11 @@ After completing some tasks, we can increase the bar's completion percentage:
 bar.add(20)
 ```
 
+If we have a known number of tasks, lowbar can automatically calculate the percentage for us:
+```python3
+bar.next(tasks)
+```
+
 We can also set the completion percentage instead of adding to it:
 ```python3
 bar.update(50)
@@ -77,11 +82,12 @@ bar.clear()
 
 Here's an example usage of the bar:
 ```python3
+tasks = 10
 bar.new()
-for i in range(10):
+for i in range(tasks):
     time.sleep(2)  # task
     bar.log(f"Task {i+1} completed")
-    bar.add(10)
+    bar.next(tasks)
 bar.clear()
 
 print("Tasks complete!")
@@ -118,7 +124,7 @@ for i in lowbar(range(100)):
     time.sleep(0.5)  # task
 ```
 
-To make things even more simpler, you can pass an integer and lowbar will convert it into a range object for you:
+Pass an integer and lowbar will convert it into a range object for you:
 ```python3
 for i in lowbar(100):
     time.sleep(0.5)  # task
@@ -150,7 +156,7 @@ Called when the `lowbar` object is created.
 | `blank_fill`      | `str`   | A single-character string used to fill the unloaded part of the bar.                                                                                | `"-"`    |
 | `desc`            | `str`   | Text displayed to the left of the bar. If the console is too small, this text will be hidden.                                                       | `""`     |
 | `remove_ends`     | `bool`  | Hides the characters at both ends of the bar (`[` & `]`).                                                                                           | `False`  |
-| `keep_receipt`    | `bool`  | Prevents `lowbar` from automatically clearing the bar after completion (useful for keeping the progress bar as a 'receipt').                        | `False`  |
+| `keep_receipt`    | `bool`  | Prevents `lowbar` from automatically clearing the bar after completion (Only applicable when used as an interable or with context manager).         | `False`  |
 
 #### `new()`
 Alias for `update(0)`.
@@ -168,6 +174,13 @@ Add to the completion percentage and refreshes the bar, resizing if the console 
 | Parameter    | Type   | Description                                      | Default         |
 |--------------|--------|--------------------------------------------------|-----------------|
 | `percentage` | `int`  | The percentage to add to the completed progress. | *No default*    |
+
+#### `next()`
+Similar to `add()`, but calculates the percentage to add based on the total number of tasks.
+
+| Parameter    | Type   | Description                                      | Default         |
+|--------------|--------|--------------------------------------------------|-----------------|
+| `tasks`      | `int`  | The total number of tasks to complete.           | *No default*    |
 
 #### `log()`
 Logs text to the console without affecting the bar.
