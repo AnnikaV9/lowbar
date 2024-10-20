@@ -34,11 +34,6 @@ Or the development version:
 pip install git+https://github.com/AnnikaV9/lowbar
 ```
 
-<br />
-<br />
-
-*The sections below document the development version in this repository. For the stable release docs, refer to the [PyPi page](https://pypi.org/project/lowbar).*
-
 ## Usage
 Once you have lowbar installed, you can import it like any other module:
 ```python3
@@ -146,53 +141,9 @@ bar = lowbar(desc="Downloading...")
 > [!NOTE]
 > If the console is too small to accommodate both the bar and the description text, the text will be hidden.
 
-## Reference
+<br>
 
-#### `__init__()`
-Constructor for the bar.
-
-| Parameter         | Type    | Description                                                                                                                                         | Default  |
-|-------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| `tasks`           | `range` | A range object that `lowbar` will iterate through when `__iter__()` is called. If an integer is provided, `lowbar` converts it into a range object. | `0`      |
-| `load_fill`       | `str`   | A single-character string used to fill the bar as it loads.                                                                                         | `"#"`    |
-| `blank_fill`      | `str`   | A single-character string used to fill the unloaded part of the bar.                                                                                | `"-"`    |
-| `desc`            | `str`   | Text displayed to the left of the bar. If the console is too small, this text will be hidden.                                                       | `""`     |
-| `remove_ends`     | `bool`  | Hides the characters at both ends of the bar (`[` & `]`).                                                                                           | `False`  |
-| `keep_receipt`    | `bool`  | Prevents `lowbar` from automatically clearing the bar after completion (Only applicable when used as an interable or with context manager).         | `False`  |
-
-#### `new()`
-Alias for `update(0)`.
-
-#### `update()`
-Set the completion percentage and refreshes the bar, resizing if the console size changes.
-
-| Parameter    | Type   | Description                                              |  Default        |
-|--------------|--------|----------------------------------------------------------|-----------------|
-| `percentage` | `int`  | The percentage to set as the completed progress. (0-100) | *No default*    |
-
-#### `add()`
-Add to the completion percentage and refreshes the bar, resizing if the console size changes.
-
-| Parameter    | Type   | Description                                      | Default         |
-|--------------|--------|--------------------------------------------------|-----------------|
-| `percentage` | `int`  | The percentage to add to the completed progress. | *No default*    |
-
-#### `next()`
-Similar to `add()`, but calculates the percentage to add based on the total number of tasks. The total can passed to `next()` or `__init__()` as `tasks`.
-
-| Parameter    | Type   | Description                                      | Default                  |
-|--------------|--------|--------------------------------------------------|--------------------------|
-| `tasks`      | `int`  | The total number of tasks to complete.           | 0 (use from constructor) |
-
-#### `log()`
-Logs text to the console without affecting the bar.
-
-| Parameter    | Type   | Description                                                              | Default         |
-|--------------|--------|--------------------------------------------------------------------------|-----------------|
-| `text`       | `str`  | The text to log. Other types must be converted to strings before.        | *No default*    |
-
-#### `clear()`
-Clears the currently active bar.
+**See the [reference](https://github.com/AnnikaV9/lowbar/wiki/Reference) for more details.**
 
 ## Contributing
 All contributions are welcome!
