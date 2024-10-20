@@ -204,4 +204,4 @@ See [CONTRIBUTING.md](../docs/CONTRIBUTING.md) for guidelines to follow.
 Contributors are listed in [CONTRIBUTORS.md](../docs/CONTRIBUTORS.md).
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](../LICENSE).
