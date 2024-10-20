@@ -7,7 +7,7 @@ from unittest.mock import patch
 from os import terminal_size
 from io import StringIO
 
-exec(open("src/lowbar/__init__.py").read())
+from lowbar import lowbar
 
 
 class TestLowbar(unittest.TestCase):

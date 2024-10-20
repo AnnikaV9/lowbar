@@ -23,10 +23,16 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install flake8
-    - name: Lint with flake8
+        python -m pip install flake8 build hatchling
+    - name: Build package
       run: |
-        flake8 --ignore=E501,E252
+        python -m build
+    - name: Install package
+      run: |
+        python -m pip install dist/*.whl
     - name: Test with unittest
       run: |
         python -m unittest
+    - name: Lint with flake8
+      run: |
+        flake8 --ignore=E501 src/*

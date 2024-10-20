@@ -1,12 +1,5 @@
 
 # lowbar
-[![](https://img.shields.io/github/actions/workflow/status/AnnikaV9/lowbar/flake8.yml?label=Flake8)](https://github.com/AnnikaV9/lowbar/actions/workflows/flake8.yml)
-[![](https://img.shields.io/pypi/v/lowbar?label=PyPi&color=blue)](https://pypi.org/project/lowbar)
-[![](https://img.shields.io/github/license/AnnikaV9/lowbar?label=License&color=blue)](https://github.com/AnnikaV9/lowbar/blob/master/LICENSE)
-[![](https://img.shields.io/badge/Python->=3.7-blue)](https://pypi.org/project/lowbar)
-[![](https://img.shields.io/github/languages/code-size/AnnikaV9/lowbar?label=Code%20Size)](https://github.com/AnnikaV9/lowbar/blob/master/src/lowbar/__init__.py)
-[![](https://static.pepy.tech/personalized-badge/lowbar?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Downloads)](https://pepy.tech/project/lowbar)
-
 The simplest no-nonsense progress bar for python.
 
 ![Preview GIF](https://github.com/user-attachments/assets/335b85ae-5bdf-48cc-9192-d63770aeb17b)
