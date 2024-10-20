@@ -41,6 +41,11 @@ Or the development version:
 pip install git+https://github.com/AnnikaV9/lowbar
 ```
 
+<br />
+<br />
+
+*The sections below document the development version in this repository. For the stable release docs, refer to the [PyPi page](https://pypi.org/project/lowbar).*
+
 ## Usage
 Once you have lowbar installed, you can import it like any other module:
 ```python3
@@ -59,7 +64,12 @@ bar.new()
 
 After completing some tasks, we can increase the bar's completion percentage:
 ```python3
-bar.update(20)
+bar.add(20)
+```
+
+We can also set the completion percentage instead of adding to it:
+```python3
+bar.update(50)
 ```
 
 Using `print()` or other similar functions will push the bar up, which doesn't look nice. To log messages without affecting the bar:
@@ -74,13 +84,11 @@ bar.clear()
 
 Here's an example usage of the bar:
 ```python3
-completion = 0
 bar.new()
 for i in range(10):
     time.sleep(2)  # task
     bar.log(f"Task {i+1} completed")
-    completion += 10
-    bar.update(completion)
+    bar.add(10)
 bar.clear()
 
 print("Tasks complete!")
@@ -90,9 +98,9 @@ You don't even need a loop:
 ```python3
 bar.new()
 time.sleep(1)  # task
-bar.update(10)
+bar.add(10)
 time.sleep(2)  # task
-bar.update(40)
+bar.add(10)
 time.sleep(2)  # task
 bar.update(100)
 bar.clear()
@@ -104,9 +112,9 @@ The bar can also be used with a context manager. It will automatically run `new(
 ```python3
 with lowbar() as bar:
     time.sleep(1)  # task
-    bar.update(10)
+    bar.add(50)
     time.sleep(3)  # task
-    bar.update(100)
+    bar.add(50)
 
 print("Tasks complete!")
 ```
@@ -137,7 +145,7 @@ bar = lowbar(desc="Downloading...")
 > [!NOTE]
 > If the console is too small to accommodate both the bar and the description text, the text will be hidden.
 
-## Parameters
+## Reference
 
 #### `__init__()`
 Called when the `lowbar` object is created.
@@ -155,18 +163,25 @@ Called when the `lowbar` object is created.
 Alias for `update(0)`.
 
 #### `update()`
-Increases or decreases the completed percentage and refreshes the bar, resizing if the console size changes.
+Set the completion percentage and refreshes the bar, resizing if the console size changes.
+
+| Parameter    | Type   | Description                                              |  Default        |
+|--------------|--------|----------------------------------------------------------|-----------------|
+| `percentage` | `int`  | The percentage to set as the completed progress. (0-100) | *No default*    |
+
+#### `add()`
+Add to the completion percentage and refreshes the bar, resizing if the console size changes.
 
 | Parameter    | Type   | Description                                      | Default         |
 |--------------|--------|--------------------------------------------------|-----------------|
-| `percentage` | `int`  | The percentage to set as the completed progress. | *No default*    |
+| `percentage` | `int`  | The percentage to add to the completed progress. | *No default*    |
 
 #### `log()`
 Logs text to the console without affecting the bar.
 
 | Parameter    | Type   | Description                                                              | Default         |
 |--------------|--------|--------------------------------------------------------------------------|-----------------|
-| `text`       | `str`  | The text to log. Other types must be converted to strings before logging.| *No default*    |
+| `text`       | `str`  | The text to log. Other types must be converted to strings before.        | *No default*    |
 
 #### `clear()`
 Clears the currently active bar.

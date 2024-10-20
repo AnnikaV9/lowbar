@@ -110,13 +110,27 @@ class lowbar:
 
     def update(self, percentage: int) -> None:
         """
-        Increases or decreases the completed percentage and
-        calls _update_bar().
+        Sets the current completion percentage.
         """
         if not isinstance(percentage, int):
             raise TypeError("arg percentage should be type int")
 
+        if percentage < 0 or percentage > 100:
+            raise ValueError("arg percentage out of range (0-100)")
+
         self.completion = percentage
+        self._update_bar()
+
+    def add(self, percentage: int) -> None:
+        """
+        Adds to the current completion percentage.
+        """
+        if not isinstance(percentage, int):
+            raise TypeError("arg percentage should be type int")
+
+        self.completion += percentage
+        self.completion = 100 if self.completion > 100 else self.completion
+        self.completion = 0 if self.completion < 0 else self.completion
         self._update_bar()
 
     def new(self) -> None:
