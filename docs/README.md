@@ -62,8 +62,10 @@ bar.add(20)
 
 If we have a known number of tasks, lowbar can automatically calculate the percentage for us:
 ```python3
-bar.next(tasks)
+bar.next(n_tasks)
 ```
+> [!NOTE]
+> If you set the number of tasks when initializing lowbar with `lowbar(n_tasks)`, you don't need to pass `n_tasks` to `next()`.
 
 We can also set the completion percentage instead of adding to it:
 ```python3
@@ -82,12 +84,12 @@ bar.clear()
 
 Here's an example usage of the bar:
 ```python3
-tasks = 10
+bar = lowbar(10)
 bar.new()
-for i in range(tasks):
-    time.sleep(2)  # task
+for i in range(10):
+    time.sleep(0.5)  # task
     bar.log(f"Task {i+1} completed")
-    bar.next(tasks)
+    bar.next()
 bar.clear()
 
 print("Tasks complete!")
@@ -96,11 +98,11 @@ print("Tasks complete!")
 You don't even need a loop:
 ```python3
 bar.new()
-time.sleep(1)  # task
+time.sleep(0.5)  # task
 bar.add(10)
-time.sleep(2)  # task
+time.sleep(0.5)  # task
 bar.add(10)
-time.sleep(2)  # task
+time.sleep(0.5)  # task
 bar.update(100)
 bar.clear()
 
@@ -109,11 +111,11 @@ print("Tasks complete!")
 
 The bar can also be used with a context manager. It will automatically run `new()` at the start and `clear()` when exiting:
 ```python3
-with lowbar() as bar:
-    time.sleep(1)  # task
-    bar.add(50)
-    time.sleep(3)  # task
-    bar.add(50)
+with lowbar(2) as bar:
+    time.sleep(0.5)  # task
+    bar.next()
+    time.sleep(0.5)  # task
+    bar.next()
 
 print("Tasks complete!")
 ```
@@ -147,11 +149,11 @@ bar = lowbar(desc="Downloading...")
 ## Reference
 
 #### `__init__()`
-Called when the `lowbar` object is created.
+Constructor for the bar.
 
 | Parameter         | Type    | Description                                                                                                                                         | Default  |
 |-------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| `bar_iter`        | `range` | A range object that `lowbar` will iterate through when `__iter__()` is called. If an integer is provided, `lowbar` converts it into a range object. | `0`      |
+| `tasks`           | `range` | A range object that `lowbar` will iterate through when `__iter__()` is called. If an integer is provided, `lowbar` converts it into a range object. | `0`      |
 | `load_fill`       | `str`   | A single-character string used to fill the bar as it loads.                                                                                         | `"#"`    |
 | `blank_fill`      | `str`   | A single-character string used to fill the unloaded part of the bar.                                                                                | `"-"`    |
 | `desc`            | `str`   | Text displayed to the left of the bar. If the console is too small, this text will be hidden.                                                       | `""`     |
@@ -176,11 +178,11 @@ Add to the completion percentage and refreshes the bar, resizing if the console 
 | `percentage` | `int`  | The percentage to add to the completed progress. | *No default*    |
 
 #### `next()`
-Similar to `add()`, but calculates the percentage to add based on the total number of tasks.
+Similar to `add()`, but calculates the percentage to add based on the total number of tasks. The total can passed to `next()` or `__init__()` as `tasks`.
 
-| Parameter    | Type   | Description                                      | Default         |
-|--------------|--------|--------------------------------------------------|-----------------|
-| `tasks`      | `int`  | The total number of tasks to complete.           | *No default*    |
+| Parameter    | Type   | Description                                      | Default                  |
+|--------------|--------|--------------------------------------------------|--------------------------|
+| `tasks`      | `int`  | The total number of tasks to complete.           | 0 (use from constructor) |
 
 #### `log()`
 Logs text to the console without affecting the bar.

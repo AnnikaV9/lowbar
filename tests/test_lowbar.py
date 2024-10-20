@@ -52,6 +52,30 @@ def test_add_under_0(mock_stdout, mock_terminal_size):
 
 @patch("shutil.get_terminal_size")
 @patch("sys.stdout", new_callable=StringIO)
+def test_tasks_in_next(mock_stdout, mock_terminal_size):
+    mock_terminal_size.return_value = terminal_size((53, 20))
+    bar = lowbar()
+    bar.new()
+    bar.next(5)
+    output = mock_stdout.getvalue()
+    assert "\r  0 % [-------------------------------------------] " in output
+    assert "\r 20 % [########-----------------------------------] " in output
+
+
+@patch("shutil.get_terminal_size")
+@patch("sys.stdout", new_callable=StringIO)
+def test_tasks_in_constructor(mock_stdout, mock_terminal_size):
+    mock_terminal_size.return_value = terminal_size((53, 20))
+    bar = lowbar(5)
+    bar.new()
+    bar.next()
+    output = mock_stdout.getvalue()
+    assert "\r  0 % [-------------------------------------------] " in output
+    assert "\r 20 % [########-----------------------------------] " in output
+
+
+@patch("shutil.get_terminal_size")
+@patch("sys.stdout", new_callable=StringIO)
 def test_desc(mock_stdout, mock_terminal_size):
     mock_terminal_size.return_value = terminal_size((53, 20))
     bar = lowbar(desc="Downloading")

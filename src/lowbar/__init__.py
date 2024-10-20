@@ -9,7 +9,7 @@ class lowbar:
     """
     The main lowbar class.
     """
-    def __init__(self, bar_iter: range | int = 0, desc: str = "",
+    def __init__(self, tasks: range | int = 0, desc: str = "",
                  load_fill: str = "#", blank_fill: str = "-",
                  remove_ends: bool = False, keep_receipt: bool = False) -> None:
         """
@@ -31,13 +31,13 @@ class lowbar:
         if not isinstance(keep_receipt, bool):
             raise TypeError("arg keep_receipt should be type bool")
 
-        if not isinstance(bar_iter, range):
-            if not isinstance(bar_iter, int):
-                raise TypeError("arg bar_iter should be either type range or int")
+        if not isinstance(tasks, range):
+            if not isinstance(tasks, int):
+                raise TypeError("arg tasks should be either type range or int")
 
-            bar_iter = range(bar_iter)
+            tasks = range(tasks)
 
-        self.bar_iter = bar_iter
+        self.tasks = tasks
         self.completion = 1
         self.load_fill = load_fill
         self.blank_fill = blank_fill
@@ -66,10 +66,10 @@ class lowbar:
         start and clear() at the end
         """
         self.new()
-        div = 100 / len(self.bar_iter)
+        div = 100 / len(self.tasks)
         add = div
         try:
-            for item in self.bar_iter:
+            for item in self.tasks:
                 yield item
                 self.update(int(div))
                 div += add
@@ -133,13 +133,20 @@ class lowbar:
         self.completion = 0 if self.completion < 0 else self.completion
         self._update_bar()
 
-    def next(self, tasks: int) -> None:
+    def next(self, tasks: int = 0) -> None:
         """
         Automatically adds to the completion percentage based
         on the number of tasks to be completed.
         """
         if not isinstance(tasks, int):
             raise TypeError("arg tasks should be type int")
+
+        if tasks < 1:
+            if not self.tasks:
+                raise RuntimeError("empty `next` was called without `tasks` being set in the constructor")
+
+            self.add(int(100 / len(self.tasks)))
+            return
 
         self.add(int(100 / tasks))
 
